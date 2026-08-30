@@ -68,7 +68,20 @@ const TOURS = [
     tagline: "Roatán's secret paradise escape — a private island just off the south coast",
     category: "Island",
     art: "beach",
-    photo: "",
+    // The aerial is the hero + the card image on the tours page.
+    photo: "lfk-aerial.jpg",
+    gallery: [
+      "lfk-aerial.jpg",
+      "lfk-overwater-swing.jpg",
+      "lfk-palapas.jpg",
+      "lfk-lagoon.jpg",
+      "lfk-cabanas.jpg",
+      "lfk-horseback.jpg",
+      "lfk-heart-view.jpg",
+      "lfk-loungers.jpg",
+      "lfk-umbrella.jpg",
+      "lfk-peacock.jpg"
+    ],
     minutes: 360,
     price: 129, kids: 79,
     group: "Any group size",
