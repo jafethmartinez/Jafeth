@@ -214,6 +214,10 @@ const TOURS = [
     art: "reef",
     photo: "snorkel-shallows.jpg",
     gallery: ["snorkel-shallows.jpg"],
+    videos: [
+      { file: "snorkel-reef.mp4", poster: "snorkel-video-poster.jpg",
+        caption: "The reef wall on one of our snorkel stops" }
+    ],
     minutes: 180,
     price: 65, kids: 45,
     group: "Up to 10 guests",
