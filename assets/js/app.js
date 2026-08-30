@@ -94,8 +94,8 @@
   function media(t) {
     const first = t.photo || (t.gallery && t.gallery.length ? t.gallery[0] : "");
     if (first) {
-      return '<img src="assets/img/' + esc(first) + '" alt="' + esc(t.name) +
-             '" loading="lazy" width="400" height="250">';
+      return '<img class="tour-img" data-art="' + esc(t.art) + '" src="assets/img/' + esc(first) +
+             '" alt="' + esc(t.name) + '" loading="lazy" width="400" height="250">';
     }
     return art(t.art);
   }
@@ -107,7 +107,8 @@
     if (shots.length) {
       out += '<div class="shots">' + shots.map((g) =>
         '<a class="shots__i" href="assets/img/' + esc(g) + '" target="_blank" rel="noopener">' +
-        '<img src="assets/img/' + esc(g) + '" alt="' + esc(t.name) + '" loading="lazy"></a>').join("") +
+        '<img class="shot-img" src="assets/img/' + esc(g) + '" alt="' + esc(t.name) +
+        '" loading="lazy"></a>').join("") +
         "</div>";
     }
     if (t.video) {
@@ -197,6 +198,27 @@
         "</div>" +
       "</article>"
     );
+  }
+
+  /* If a photo file is missing, quietly fall back to the built-in
+     illustration rather than showing a broken image. */
+  function wireImageFallbacks(root) {
+    $$("img.tour-img", root || document).forEach((img) => {
+      if (img.dataset.fbWired) return;
+      img.dataset.fbWired = "1";
+      img.addEventListener("error", () => {
+        const holder = img.parentElement;
+        if (holder) holder.innerHTML = art(img.getAttribute("data-art") || "beach");
+      });
+    });
+    $$("img.shot-img", root || document).forEach((img) => {
+      if (img.dataset.fbWired) return;
+      img.dataset.fbWired = "1";
+      img.addEventListener("error", () => {
+        const a = img.closest(".shots__i");
+        if (a) a.remove();
+      });
+    });
   }
 
   /* =====================================================================
@@ -304,6 +326,7 @@
 
     function draw(avail) {
       grid.innerHTML = picks.map(byId).filter(Boolean).map((t) => card(t, avail)).join("");
+      wireImageFallbacks(grid);
     }
     initPlanner(draw);
     draw(windowFor(loadPlan()));
@@ -383,6 +406,7 @@
           '<a class="btn btn--wa" data-wa="" href="#">Message us on WhatsApp</a></div>';
 
       $$("[data-wa]", grid).forEach((el) => { el.href = waLink(); });
+      wireImageFallbacks(grid);
     }
 
     $("#cats").addEventListener("click", (e) => {
@@ -484,6 +508,8 @@
           "</div>" +
         "</aside>" +
       "</div>";
+
+    wireImageFallbacks(root);
 
     $("#tourWa").href = waLink("Hi " + SITE.name + "! I have a question about the \"" + t.name + "\" tour.");
   }

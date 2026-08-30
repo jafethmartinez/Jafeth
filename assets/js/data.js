@@ -205,10 +205,18 @@ const TOURS = [
     tagline: "A remote white-sand cay off the East End, with sharks swimming beneath you",
     category: "Water",
     art: "reef",
-    photo: "",
-    // ✏️ Real photos from the tour. Drop files in assets/img/ and list them here.
-    //    The first one becomes the card image on the tours page.
-    gallery: [],
+    // The drone shot is the hero + the card image on the tours page.
+    photo: "pigeon-cay-drone.jpg",
+    // ✏️ Real photos from the tour. Files live in assets/img/.
+    //    The first one is the card image on the tours page.
+    //    If a file is missing the site falls back to the illustration,
+    //    so nothing ever shows as broken.
+    gallery: [
+      "pigeon-cay-drone.jpg",
+      "nurse-shark.jpg",
+      "snorkelers-sharks.jpg",
+      "stingray-guide.jpg"
+    ],
     video: "nurse-sharks.mp4",
     videoCaption: "Nurse sharks at Pigeon Cay — filmed on one of our trips",
     minutes: 360,
