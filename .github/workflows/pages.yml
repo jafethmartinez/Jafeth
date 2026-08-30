@@ -1,0 +1,46 @@
+# Publishes the site to GitHub Pages.
+#
+# The `enablement: true` below turns GitHub Pages on for this repo the first
+# time this runs, so there is nothing to click in Settings.
+name: Deploy site to GitHub Pages
+
+on:
+  push:
+    branches:
+      - main
+      - claude/web-site-build-r36143
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# Let a running deploy finish rather than cancelling it mid-publish.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Check out the site
+        uses: actions/checkout@v4
+
+      - name: Configure Pages (enables it on first run)
+        uses: actions/configure-pages@v5
+        with:
+          enablement: true
+
+      - name: Upload the site
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v4
