@@ -17,7 +17,7 @@ No build step, no dependencies, no server. Just open `index.html`.
 | `tours.html`   | All 12 tours, filterable by category and by whether they fit your port day |
 | `tour.html`    | Single tour detail. Driven by the URL: `tour.html?id=west-bay-beach` |
 | `book.html`    | Booking request form → sends via WhatsApp or email |
-| `about.html`   | Your story (**needs your words — see below**) |
+| `about.html`   | Your story and the team (Jafeth, Oscar, Mireska) |
 | `contact.html` | Contact details + 10 FAQs |
 | `404.html`     | Not-found page |
 
@@ -32,26 +32,25 @@ booking form.
 ```js
 const SITE = {
   name:     "Explore Roatán",
-  whatsapp: "50400000000",          // ← YOUR number, digits only, no + or spaces
-  phone:    "+504 0000-0000",
-  email:    "bookings@yourdomain.com",
+  whatsapp: "16892870134",          // Jafeth's number, from your Wix site
+  phone:    "+1 689-287-0134",
+  email:    "emilmartinez938@yahoo.com",
   facebook: "", instagram: "", tripadvisor: ""   // leave "" to hide the icon
 };
 ```
 
-**The WhatsApp number is the single most important field.** Honduras is country
-code 504, so a number like `9999-8888` becomes `50499998888`. Until you change
-it, every WhatsApp button on the site goes nowhere.
+Contact details and the team are already filled in from your Wix site. Add your
+social links when you have them.
 
 Then:
 
-1. **Prices.** Every price in `data.js` is a realistic placeholder, not a real
-   quote. Go through all 12 tours and set your actual rates.
+1. **Prices.** Every price in `data.js` is a placeholder, not a real
+   quote. Go through all 11 attractions and set your actual rates.
 2. **Durations.** The `minutes` field on each tour is what the Port Time Planner
    uses to tell a guest whether they'll make it back to their ship. Keep these
    honest — this number is a promise.
-3. **Your story.** `about.html` has a marked section with placeholder text.
-   Replace it with your own words. It's the most valuable writing on the site.
+3. **Your founding story.** `about.html` is written from your Wix copy. Add the
+   part only you can write: who started this, and why.
 4. **Reviews.** `index.html` has a commented-out reviews section. Fill it in with
    *real* guest reviews once you have them. Never invent them — it's illegal in
    many countries and it's the fastest way to lose a Tripadvisor listing.
@@ -79,6 +78,8 @@ Key fields:
 | `kids` | Per child under 12, or `null` if not offered. |
 | `art` | Illustration style: `reef`, `beach`, `jungle`, `adventure`, `wildlife`, `boat`, `culture` |
 | `photo` | Optional real photo — see below. |
+| `extra` | Optional second paragraph of story (used on Little French Key, Cultural Getaways, Pigeon Cay). |
+| `verdict` | Optional closing pitch, shown in a highlighted box. |
 
 ### Using real photos
 

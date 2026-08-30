@@ -276,13 +276,42 @@
   function initHome() {
     const grid = $("#featured");
     if (!grid) return;
-    const picks = ["west-bay-beach", "gumbalimba-park", "reef-snorkel-boat"];
+    const picks = ["little-french-key", "nurse-sharks", "animal-encounters"];
 
     function draw(avail) {
       grid.innerHTML = picks.map(byId).filter(Boolean).map((t) => card(t, avail)).join("");
     }
     initPlanner(draw);
     draw(windowFor(loadPlan()));
+  }
+
+  /* =====================================================================
+     Travel tips + team (rendered wherever their container exists)
+     ===================================================================== */
+  function initTips() {
+    const el = $("#tips");
+    if (!el || typeof TIPS === "undefined") return;
+    el.innerHTML = TIPS.map((t, i) =>
+      '<div class="tip"><span class="tip__n">' + String(i + 1).padStart(2, "0") + "</span>" +
+      "<h3>" + esc(t.title) + "</h3><p>" + esc(t.body) + "</p></div>").join("");
+  }
+
+  function initTeam() {
+    const el = $("#team");
+    if (!el || typeof TEAM === "undefined") return;
+    el.innerHTML = TEAM.map((m) => {
+      const digits = m.phone.replace(/[^\d]/g, "");
+      return '<div class="member">' +
+        (m.photo
+          ? '<img class="member__photo" src="assets/img/' + esc(m.photo) + '" alt="' + esc(m.name) + '" loading="lazy">'
+          : '<div class="member__photo member__photo--none">' + esc(m.name.split(" ").map((w) => w[0]).join("").slice(0, 2)) + "</div>") +
+        "<h3>" + esc(m.name) + "</h3>" +
+        '<p class="member__role">' + esc(m.role) + "</p>" +
+        '<p class="member__contact"><a href="tel:' + digits + '">' + esc(m.phone) + "</a>" +
+        (m.note ? '<span class="member__note">' + esc(m.note) + "</span>" : "") +
+        (m.email ? '<a href="mailto:' + esc(m.email) + '">' + esc(m.email) + "</a>" : "") +
+        "</p></div>";
+    }).join("");
   }
 
   /* =====================================================================
@@ -402,6 +431,7 @@
             '<div><div class="spec__k">Adult price</div><div class="spec__v">' + priceLabel(t) + "</div></div>" +
           "</div>" +
           "<p class=\"lede\">" + esc(t.blurb) + "</p>" +
+          (t.extra ? "<p>" + esc(t.extra) + "</p>" : "") +
           (t.note ? '<div class="note"><strong>Good to know:</strong> ' + esc(t.note) + "</div>" : "") +
           "<h2>What you'll do</h2>" + list(t.highlights) +
           "<h2>Your day, step by step</h2>" +
@@ -412,6 +442,7 @@
           list(t.excludes, " ticks--x") + "</div></div>" +
           "<h2>What to bring</h2>" + list(t.bring) +
           "<h2>Who this suits</h2>" + list(t.good) +
+          (t.verdict ? '<div class="verdict"><h3>The verdict</h3><p>' + esc(t.verdict) + "</p></div>" : "") +
         "</div>" +
         "<aside>" +
           '<div class="bookbox">' + priceRow +
@@ -613,6 +644,8 @@
   /* ---------- boot ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     hydrateSite();
+    initTips();
+    initTeam();
     initHome();
     initTours();
     initTour();

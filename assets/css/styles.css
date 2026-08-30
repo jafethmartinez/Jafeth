@@ -439,3 +439,38 @@ select{
   .planner--float{ margin-top:-40px; }
   .formcard,.planner{ padding:22px 18px; }
 }
+
+/* ---------- travel tips ---------- */
+.tips{ display:grid; gap:20px; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); }
+.tip{ background:var(--sand-deep); border:1px solid var(--line); border-radius:var(--radius-lg); padding:26px; }
+.tip__n{ display:block; font-family:var(--serif); font-size:1.15rem; font-weight:700; color:var(--coral); margin-bottom:14px;
+  padding-bottom:14px; border-bottom:1px solid rgba(6,35,46,.14); }
+.tip h3{ font-size:1.12rem; margin-bottom:.4em; }
+.tip p{ font-size:.95rem; color:var(--ink-soft); margin:0; }
+
+/* ---------- team ---------- */
+.team{ display:grid; gap:26px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); }
+.member{ background:var(--white); border:1px solid var(--line); border-radius:var(--radius-lg);
+  padding:26px; text-align:center; box-shadow:var(--shadow-sm); }
+.member__photo{ width:104px; height:104px; border-radius:50%; object-fit:cover; margin:0 auto 16px; display:block; }
+.member__photo--none{ display:flex; align-items:center; justify-content:center; background:var(--turq-light);
+  font-family:var(--serif); font-size:1.9rem; font-weight:650; color:var(--sea-deep); }
+.member h3{ font-size:1.12rem; margin-bottom:.2em; }
+.member__role{ font-size:.78rem; font-weight:750; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--sea); margin:0 0 14px; }
+.member__contact{ display:grid; gap:5px; font-size:.92rem; margin:0; }
+.member__contact a{ color:var(--sea); text-decoration:none; font-weight:600; word-break:break-word; }
+.member__contact a:hover{ text-decoration:underline; }
+.member__note{ font-size:.8rem; color:var(--ink-faint); }
+
+/* ---------- verdict ---------- */
+.verdict{ background:var(--turq-light); border-radius:var(--radius-lg); padding:24px 26px; margin-top:30px; }
+.verdict h3{ font-size:1.1rem; margin-bottom:.4em; color:#04443c; }
+.verdict p{ margin:0; color:#04443c; font-size:1.02rem; }
+
+/* ---------- marquee ---------- */
+.marquee{ overflow:hidden; border-block:1px solid var(--line); background:var(--white); padding:16px 0; }
+.marquee__in{ display:flex; gap:40px; white-space:nowrap; animation:slide 34s linear infinite; }
+.marquee span{ font-family:var(--serif); font-size:1.18rem; font-weight:650; color:var(--turq); letter-spacing:.02em; }
+@keyframes slide{ from{ transform:translateX(0); } to{ transform:translateX(-50%); } }
+@media (prefers-reduced-motion:reduce){ .marquee__in{ animation:none; flex-wrap:wrap; white-space:normal; justify-content:center; } }

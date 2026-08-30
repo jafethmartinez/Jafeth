@@ -1,25 +1,44 @@
 /* =====================================================================
    SITE CONFIG  —  ✏️  EDIT THIS BLOCK FIRST
-   Everything below (business name, phone, email) appears across the
-   whole site. Change it here once and every page updates.
+   Taken from your Wix site. Everything below appears across the whole
+   site — change it here once and every page updates.
    ===================================================================== */
 const SITE = {
-  name: "Explore Roatán",                    // ✏️ your business name (from your Wix draft)
-  tagline: "Shore excursions run by locals who live here",
-  // ✏️ WhatsApp number in international format, digits only, no + or spaces.
-  //    Honduras country code is 504. Example: 50412345678
-  whatsapp: "50400000000",
-  phone: "+504 0000-0000",                  // ✏️ display phone
-  email: "bookings@yourdomain.com",         // ✏️ your booking inbox
+  name: "Explore Roatán",
+  tagline: "Unparalleled local insights and tropical adventures await you in the heart of Honduras",
+  // Jafeth's number — digits only, no + or spaces. (+1 689 287 0134)
+  whatsapp: "16892870134",
+  phone: "+1 689-287-0134",
+  email: "emilmartinez938@yahoo.com",
   base: "Roatán, Bay Islands, Honduras",
-  // ✏️ Set to your real links, or leave "" to hide the icon
+  // ✏️ Add your real links, or leave "" to hide the icon
   facebook: "",
   instagram: "",
   tripadvisor: ""
 };
 
 /* =====================================================================
-   PORTS & PICKUP POINTS
+   THE TEAM
+   ✏️ Add photos: drop them in assets/img/ and put the filename in `photo`
+   ===================================================================== */
+const TEAM = [
+  { name: "Jafeth Martinez",  role: "CEO",      phone: "689-287-0134",   note: "iMessage and WhatsApp", email: "emilmartinez938@yahoo.com", photo: "" },
+  { name: "Oscar Martinez",   role: "Co-owner", phone: "+504 9989-2430", note: "", email: "", photo: "" },
+  { name: "Mireska Martinez", role: "Co-owner", phone: "+504 9783-5574", note: "", email: "", photo: "" }
+];
+
+/* =====================================================================
+   TRAVEL TIPS  —  your words, from the Wix site
+   ===================================================================== */
+const TIPS = [
+  { title: "Arrival Essentials", body: "Roatán is best accessed via the island's only airport. We recommend booking your flight in advance to secure your spot on the island's most popular tour boats." },
+  { title: "Local Insights",    body: "Our local guides are the best resource for finding the most secluded spots and understanding the unique culture of the island's residents." },
+  { title: "Water Safety",      body: "Always wear a life jacket when swimming or kayaking. The waters are calm and safe for snorkeling, but the currents can be strong in certain areas." },
+  { title: "Local Cuisine",     body: "Roatán's food scene is vibrant. Try the local specialties like 'Cocina Hondureña' and fresh seafood at the island's most popular beachfront restaurants." }
+];
+
+/* =====================================================================
+   PICKUP POINTS
    ===================================================================== */
 const PICKUPS = [
   { id: "mahogany", label: "Mahogany Bay Cruise Center", note: "We meet you just past the welcome center, outside the port gate." },
@@ -29,410 +48,382 @@ const PICKUPS = [
 ];
 
 /* =====================================================================
-   TOURS
-   ---------------------------------------------------------------------
-   ✏️  To add a tour: copy any block below and change the fields.
-   ✏️  To remove one: delete its block.
-   ✏️  To hide one temporarily without deleting: set  active: false
+   TOURS  —  all 11 attractions from your Wix site.
 
-   FIELD NOTES
-     id          unique short name, lowercase, used in the page URL
-     minutes     total door-to-door time. This is what the Port Time
-                 Planner uses to decide if a guest can make it back
-                 to their ship — keep it honest.
-     price       price PER ADULT in USD
-     kids        price per child (under 12), or null if not offered
-     art         picks the illustration: reef | beach | jungle |
-                 adventure | wildlife | boat | culture
-     photo       optional. Drop a photo in assets/img/ and put the
-                 filename here, e.g. "west-bay.jpg". Leave "" to use
-                 the built-in illustration instead.
+   ⚠️  TWO FIELDS ON EVERY TOUR STILL NEED YOU:
+       price / kids  — PLACEHOLDERS. Not your rates. Replace them all.
+       minutes       — my estimate of door-to-door time. This is what the
+                       Port Time Planner uses to promise a cruise guest
+                       they'll get back to their ship. Correct every one.
+
+   The `blurb` is YOUR copy from the Wix site, word for word.
+   The highlights / includes / itinerary lists I drafted around it —
+   read them and fix anything that isn't how you actually run the tour.
    ===================================================================== */
 const TOURS = [
   {
-    id: "west-bay-beach",
-    active: true,
-    name: "West Bay Beach & Reef Snorkel",
-    tagline: "The postcard beach, plus the reef that starts 30 metres offshore",
-    category: "Beach",
-    art: "beach",
-    photo: "",
-    minutes: 240,
-    price: 55, kids: 35,
-    group: "Up to 12 guests",
-    blurb: "West Bay is the beach people picture when they picture Roatán — white sand, calm turquoise water, and a living coral reef close enough to swim to. We handle the transport, set you up with a shaded lounger, and put you in the water at the best entry point.",
-    highlights: [
-      "Round-trip transport from your ship or hotel",
-      "Reserved beach loungers and umbrella",
-      "Snorkel gear and vest included",
-      "Guided swim out to the reef wall",
-      "Time to eat and swim on your own schedule"
-    ],
-    includes: ["Air-conditioned transport", "Snorkel mask, fins and vest", "Beach chair + umbrella", "Bilingual guide", "Bottled water"],
-    excludes: ["Food and drinks", "Gratuities"],
-    bring: ["Reef-safe sunscreen", "Towel", "Cash for lunch", "Water shoes if you have them"],
-    itinerary: [
-      "Meet your guide at the port gate",
-      "40-minute scenic drive across the island to West Bay",
-      "Snorkel briefing and guided reef swim",
-      "Free time to swim, eat and relax",
-      "Return transfer with time to spare before all-aboard"
-    ],
-    good: ["First-time visitors", "Families", "Guests who want beach + reef in one stop"]
-  },
-  {
-    id: "gumbalimba-park",
-    active: true,
-    name: "Gumbalimba Park: Monkeys, Sloths & Beach",
-    tagline: "Capuchins on your shoulder, then straight to the sand",
-    category: "Wildlife",
-    art: "wildlife",
-    photo: "",
-    minutes: 300,
-    price: 79, kids: 55,
-    group: "Up to 14 guests",
-    blurb: "Gumbalimba is Roatán's best-known animal park — a shaded jungle trail where capuchin monkeys will happily sit on your shoulder, plus sloths, scarlet macaws and a walk through the botanical grounds. We pair it with beach time so you get the island's two headline experiences in one outing.",
-    highlights: [
-      "Hands-on capuchin monkey encounter",
-      "Sloth and macaw encounters with a park naturalist",
-      "Jungle botanical trail and pirate history exhibit",
-      "Beach time on the park's private beach",
-      "Photos taken by your guide throughout"
-    ],
-    includes: ["Park admission", "Round-trip transport", "Naturalist guide", "Beach access", "Bottled water"],
-    excludes: ["Lunch", "Park photo package", "Gratuities"],
-    bring: ["Camera", "Reef-safe sunscreen", "Insect repellent", "Cash for lunch"],
-    itinerary: [
-      "Pickup at your ship or hotel",
-      "Drive to the park through the island's west end",
-      "Guided animal encounters — monkeys, sloths, macaws",
-      "Botanical trail walk",
-      "Beach and swim time",
-      "Return transfer"
-    ],
-    good: ["Families with kids", "Photographers", "Anyone who wants wildlife without a hike"]
-  },
-  {
-    id: "reef-snorkel-boat",
-    active: true,
-    name: "Two-Stop Reef Snorkel by Boat",
-    tagline: "Off the beach and out onto the Mesoamerican Barrier Reef",
-    category: "Water",
-    art: "reef",
-    photo: "",
-    minutes: 180,
-    price: 65, kids: 45,
-    group: "Up to 10 guests",
-    blurb: "Roatán sits on the Mesoamerican Barrier Reef — the second largest reef system on the planet. This trip takes you by boat to two different sites away from the crowded beach entries, where the coral is healthier and the fish are used to snorkelers rather than swimmers.",
-    highlights: [
-      "Two distinct reef sites in one trip",
-      "In-water guide who points out what you're looking at",
-      "Small boat, small group",
-      "Fresh fruit and water aboard",
-      "Non-swimmers supported with flotation vests"
-    ],
-    includes: ["Boat and captain", "In-water snorkel guide", "Mask, snorkel, fins, vest", "Fruit and water"],
-    excludes: ["Underwater camera rental", "Gratuities"],
-    bring: ["Reef-safe sunscreen only", "Towel", "Motion sickness tablets if you're prone"],
-    itinerary: [
-      "Meet at the dock",
-      "Safety and snorkel briefing",
-      "Reef site one — shallow coral garden",
-      "Surface break, fruit and water",
-      "Reef site two — reef wall drop-off",
-      "Return to dock"
-    ],
-    good: ["Short port days", "Confident and nervous swimmers alike", "Reef lovers"]
-  },
-  {
-    id: "two-tank-dive",
-    active: true,
-    name: "Certified Two-Tank Dive",
-    tagline: "Wall dives and swim-throughs for certified divers",
-    category: "Water",
-    art: "reef",
-    photo: "",
-    minutes: 270,
-    price: 145, kids: null,
-    group: "Up to 6 divers",
-    blurb: "Roatán is one of the most affordable world-class dive destinations anywhere, with steep walls, canyons and swim-throughs a short boat ride from shore. Two tanks, two sites, guided by a local divemaster who knows which sites are working that morning.",
-    highlights: [
-      "Two guided boat dives",
-      "Wall, canyon and swim-through sites",
-      "Divemaster-led small groups",
-      "Full rental gear available",
-      "Nitrox available on request"
-    ],
-    includes: ["Two tanks and weights", "Divemaster guide", "Boat and captain", "Water and fruit"],
-    excludes: ["Full gear rental", "Nitrox surcharge", "Gratuities"],
-    bring: ["Certification card (required)", "Logbook", "Your own mask if you prefer"],
-    itinerary: [
-      "Dock check-in and gear fitting",
-      "Boat ride to first site",
-      "Dive one with divemaster",
-      "Surface interval — water and fruit",
-      "Dive two at a second site",
-      "Return to dock"
-    ],
-    good: ["Certified divers only", "Guests with a longer port day"],
-    note: "A current open-water certification is required. Diving is not recommended within 18 hours of a flight."
-  },
-  {
-    id: "zipline-beach",
-    active: true,
-    name: "Jungle Zip Line + Beach Break",
-    tagline: "Canopy lines over the jungle, then cool off in the sea",
-    category: "Adventure",
-    art: "adventure",
-    photo: "",
-    minutes: 240,
-    price: 85, kids: 60,
-    group: "Up to 12 guests",
-    blurb: "A full canopy circuit through the hills above West Bay — multiple lines, platforms in the treetops, and views out over the reef between runs. Once you're back on the ground we take you down to the beach to swim it off.",
-    highlights: [
-      "Multi-line canopy course with certified guides",
-      "Treetop platforms with reef views",
-      "All safety gear and briefing included",
-      "Beach and swim time afterward",
-      "Round-trip transport"
-    ],
-    includes: ["Zip line circuit", "Harness, helmet and gloves", "Certified guides", "Beach access", "Transport"],
-    excludes: ["Food and drinks", "Photo package", "Gratuities"],
-    bring: ["Closed-toe shoes (required)", "Swimsuit under clothes", "Sunscreen"],
-    itinerary: [
-      "Pickup at your ship or hotel",
-      "Drive to the canopy course",
-      "Safety briefing and gear fitting",
-      "Zip line circuit with your guides",
-      "Transfer to the beach for swim time",
-      "Return transfer"
-    ],
-    good: ["Active guests", "Teens and older kids", "First-time zipliners"],
-    note: "Weight and age limits apply. Closed-toe shoes are required — no sandals on the course."
-  },
-  {
     id: "little-french-key",
     active: true,
-    name: "Little French Key Island Day",
-    tagline: "A private island day pass with lunch and rescued wildlife",
-    category: "Beach",
+    name: "Little French Key",
+    tagline: "Roatán's secret paradise escape — a private island just off the south coast",
+    category: "Island",
     art: "beach",
     photo: "",
     minutes: 360,
     price: 129, kids: 79,
     group: "Any group size",
-    blurb: "A small private island off Roatán's east end, reached by a short boat hop. Calm swimming coves, hammocks over the water, kayaks and paddleboards, a rescued-animal sanctuary on site, and a proper sit-down lunch. This is the one to pick when you want a full, unhurried day.",
+    blurb: "Escape the ordinary with a short boat ride to one of Roatán's gems. Little French Key is a private sanctuary located just off the southern coast near French Cay, where turquoise waters meet powdery white sand. This isn't just a beach; it's a private island dedicated to relaxation and adventure. It sits right on the Mesoamerican Barrier Reef—the world's second-largest—making the surrounding waters a haven for swimmers and snorkelers.",
+    extra: "Forget the crowds of public beaches. This destination is designed for exclusivity, featuring over-water swings, shaded beach beds, and hammocks. It is the perfect backdrop for your vacation photography. While it is a top choice for cruise ship visitors due to easy logistics, we can also arrange extended stays for those wanting more time in paradise.",
+    verdict: "If you are dreaming of crystal-clear water, diverse marine activities, and a peaceful atmosphere for your island photos, Little French Key is an excellent choice for your Roatán itinerary.",
     highlights: [
-      "Private island access with day pass",
-      "Lunch included",
-      "Kayaks, paddleboards and snorkel gear",
-      "Rescued animal sanctuary on the island",
-      "Overwater hammocks and shaded cabanas"
+      "Relax on secluded, pristine beaches",
+      "Snorkel through vibrant coral gardens",
+      "Kayak or paddleboard across calm lagoons",
+      "Experience horseback riding through the surf",
+      "Rent jet skis or book a beachside massage",
+      "Enjoy a tropical cocktail at the famous swim-up bar",
+      "Dine on fresh Caribbean cuisine at waterfront spots"
     ],
-    includes: ["Island day pass", "Boat transfer to the island", "Lunch", "Kayaks and paddleboards", "Round-trip ground transport"],
-    excludes: ["Drinks", "Spa treatments", "Gratuities"],
-    bring: ["Swimsuit", "Towel", "Reef-safe sunscreen", "Cash for drinks"],
+    includes: ["Boat transfer to the island", "Island day pass", "Round-trip ground transport", "Bilingual guide"],
+    excludes: ["Lunch and drinks", "Jet ski rental", "Massage", "Gratuities"],
+    bring: ["Swimsuit", "Towel", "Reef-safe sunscreen", "Camera", "Cash for food, drinks and extras"],
     itinerary: [
       "Pickup at your ship or hotel",
-      "Drive to the east end boat dock",
-      "Short boat crossing to the island",
-      "Free time — swim, kayak, snorkel, hammocks",
-      "Lunch",
+      "20 minutes from Mahogany Bay, or 30 from the Port of Roatán, to the dock",
+      "A brief 5-minute boat crossing to reach the key",
+      "Free time — swim, snorkel, kayak, horseback ride",
+      "Lunch and the swim-up bar",
       "Boat and ground transfer back"
     ],
-    good: ["Longer port days", "Couples", "Groups who want everything in one place"]
+    good: ["Longer port days", "Families", "Couples", "Anyone who wants everything in one place"],
+    note: "The island is home to various rescued and exotic animals. Because guest experiences vary, we encourage visitors to read recent reviews to ensure the wildlife interactions align with their personal travel values."
   },
   {
-    id: "dolphin-encounter",
+    id: "cultural-getaways",
     active: true,
-    name: "Dolphin Encounter at Sandy Bay",
-    tagline: "Meet the dolphins at the island's marine science institute",
-    category: "Wildlife",
-    art: "wildlife",
-    photo: "",
-    minutes: 210,
-    price: 119, kids: 89,
-    group: "Up to 10 guests",
-    blurb: "The Roatán Institute for Marine Sciences at Sandy Bay runs a long-established bottlenose dolphin programme alongside its research and education work. A trainer introduces you to the animals in a shallow natural lagoon and explains the research the institute does on the surrounding reef.",
-    highlights: [
-      "Shallow-water encounter with trainers",
-      "Marine science briefing from institute staff",
-      "Natural seawater lagoon setting",
-      "Time at Sandy Bay beach afterward",
-      "Round-trip transport"
-    ],
-    includes: ["Encounter admission", "Trainer-led session", "Transport", "Beach time"],
-    excludes: ["Photo package", "Lunch", "Gratuities"],
-    bring: ["Swimsuit", "Towel", "Reef-safe sunscreen"],
-    itinerary: [
-      "Pickup at your ship or hotel",
-      "Drive to Sandy Bay",
-      "Check-in and marine briefing",
-      "Dolphin encounter session",
-      "Beach time",
-      "Return transfer"
-    ],
-    good: ["Families", "Animal lovers", "Mid-length port days"]
-  },
-  {
-    id: "island-highlights",
-    active: true,
-    name: "Island Highlights & Garifuna Punta Gorda",
-    tagline: "The island as islanders know it, east end to west",
+    name: "Cultural Getaways",
+    tagline: "The Garifuna community of Punta Gorda, on its own terms",
     category: "Culture",
     art: "culture",
     photo: "",
     minutes: 300,
     price: 69, kids: 45,
     group: "Up to 14 guests",
-    blurb: "Most visitors see one beach and go home. This tour crosses the island — through Coxen Hole and the hillside neighbourhoods, up to the lookout points, and east to Punta Gorda, the oldest Garifuna community in Honduras, founded in 1797. You'll hear the island's history from someone whose family lived it.",
+    blurb: "If you want to discover the vibrant heart of the island beyond its sandy shores, Punta Gorda is your essential first stop. As the oldest Garífuna settlement in Honduras, this village offers a deep connection to a heritage that is as resilient as it is beautiful.",
+    extra: "Located on the scenic eastern coast, Punta Gorda was established in 1797. After being exiled from St. Vincent, the Garífuna people arrived in dugout canoes, preserving a unique fusion of African and Indigenous Caribbean traditions that remain the lifeblood of the community today. From the moment you arrive, the pulse of the drums will draw you in. For the Garífuna, music is a living history — traditional beats accompany soulful songs in their native tongue and the energetic Punta dance. These movements are a celebration of joy and survival, so if someone invites you to join in, embrace the moment.",
+    verdict: "This village offers a rare opportunity to engage with a culture that has flourished for over two centuries. When you visit, you aren't just a tourist — you are a guest in a story that has been told for 225 years. Come with an open heart, leave with a new rhythm in your step.",
     highlights: [
-      "Punta Gorda Garifuna community visit",
-      "Island lookout points and photo stops",
-      "Local market and craft stop",
-      "History of the Bay Islands from a local guide",
-      "Traditional food tasting"
+      "Punta Gorda — the oldest Garífuna settlement in Honduras, established 1797",
+      "Traditional drumming and the energetic Punta dance",
+      "Machuca — savory mashed plantains in a creamy coconut seafood broth",
+      "Tapado — a hearty seafood stew simmered in fresh coconut milk",
+      "Local catch — fresh fish, conch and lobster with traditional herbs and cassava bread",
+      "Meet artisans, watch the fishermen, hear stories from the elders"
     ],
-    includes: ["Round-trip transport", "Bilingual local guide", "Community visit", "Food tasting", "Water"],
+    includes: ["Round-trip transport", "Bilingual local guide", "Museum entry", "Food and drink tasting", "Water"],
     excludes: ["Full lunch", "Craft purchases", "Gratuities"],
     bring: ["Camera", "Cash for crafts", "Comfortable walking shoes"],
     itinerary: [
       "Pickup at your ship or hotel",
-      "Drive through Coxen Hole with commentary",
-      "Island lookout and photo stop",
-      "Punta Gorda — Garifuna community and culture",
-      "Food tasting and craft stop",
+      "Drive east across the island with commentary",
+      "Arrive in Punta Gorda",
+      "Museum visit and community welcome",
+      "Traditional dance performance",
+      "Food and drink tasting",
       "Return transfer"
     ],
-    good: ["Repeat visitors", "Culture and history travellers", "Non-swimmers"]
+    good: ["Culture and history travellers", "Repeat visitors", "Non-swimmers"],
+    note: "Plan your visit around April 12th to witness Garífuna Arrival Day. This vibrant festival reenacts the historic canoe landing and fills the streets with parades, drumming and incredible food."
   },
   {
-    id: "glass-bottom-iguana",
+    id: "glass-bottom-boat",
     active: true,
-    name: "Glass Bottom Boat & Iguana Farm",
-    tagline: "See the reef without getting wet, then feed the iguanas",
+    name: "Glass-Bottom Boat",
+    tagline: "See the reef without getting wet",
     category: "Family",
     art: "boat",
     photo: "",
-    minutes: 180,
+    minutes: 150,
     price: 59, kids: 39,
     group: "Up to 16 guests",
-    blurb: "Built for guests who'd rather stay dry — a glass bottom boat over the reef with a guide narrating what's passing underneath, followed by the iguana farm at French Cay where hundreds of free-roaming iguanas come to be fed. Easy pace, minimal walking, great with grandparents and small children.",
+    blurb: "Explore the wonders of the deep without getting wet on our semi-submarine tour. See vibrant coral reefs and exotic sea creatures through crystal-clear glass panels.",
     highlights: [
-      "Glass bottom boat over living reef",
-      "Guide narration throughout",
-      "Hundreds of free-roaming iguanas",
-      "Hand-feeding opportunity",
-      "Minimal walking, no swimming required"
+      "Semi-submarine with crystal-clear glass panels",
+      "Coral reef and marine life viewing",
+      "Guide narrating what passes underneath",
+      "No swimming required, minimal walking",
+      "Shaded and comfortable throughout"
     ],
-    includes: ["Glass bottom boat trip", "Iguana farm admission", "Iguana feed", "Transport", "Guide"],
+    includes: ["Semi-submarine tour", "Guide", "Round-trip transport", "Bottled water"],
     excludes: ["Food and drinks", "Gratuities"],
-    bring: ["Camera", "Hat", "Sunscreen"],
+    bring: ["Camera", "Hat", "Sunglasses"],
     itinerary: [
       "Pickup at your ship or hotel",
-      "Board the glass bottom boat",
-      "Guided reef viewing",
-      "Transfer to the iguana farm",
-      "Iguana feeding and free time",
-      "Return transfer"
+      "Board the semi-submarine",
+      "Guided reef viewing through the glass panels",
+      "Return to dock",
+      "Transfer back"
     ],
-    good: ["Non-swimmers", "Grandparents and young kids", "Short port days"]
+    good: ["Non-swimmers", "Grandparents and young children", "Short port days", "Guests with mobility needs"]
   },
   {
-    id: "atv-adventure",
+    id: "snorkeling",
     active: true,
-    name: "ATV Jungle & Coast Ride",
-    tagline: "Ridge trails, mud, and a beach stop at the end",
-    category: "Adventure",
-    art: "adventure",
+    name: "Pristine Snorkeling",
+    tagline: "The world's second-largest barrier reef, up close",
+    category: "Water",
+    art: "reef",
     photo: "",
-    minutes: 210,
-    price: 99, kids: null,
-    group: "Up to 8 machines",
-    blurb: "Single and double ATVs on the trails behind the island's north shore — jungle track, ridge climbs with views across to the mainland on a clear day, and a finish at a quiet beach for a swim before you head back.",
+    minutes: 180,
+    price: 65, kids: 45,
+    group: "Up to 10 guests",
+    blurb: "Explore Roatán's vibrant coral reef up close with guided snorkeling at some of the island's best spots. Encounter colorful marine life in crystal-clear waters.",
     highlights: [
-      "Guided ATV trail ride",
-      "Ridge-top viewpoint stop",
-      "Single or double machines",
-      "Beach swim stop",
-      "Full safety briefing and gear"
+      "Guided snorkelling on the Mesoamerican Barrier Reef",
+      "The island's best spots, chosen on the day for conditions",
+      "In-water guide who points out what you're seeing",
+      "All gear included",
+      "Non-swimmers supported with flotation vests"
     ],
-    includes: ["ATV rental", "Helmet and goggles", "Trail guide", "Fuel", "Beach stop"],
-    excludes: ["Damage deposit", "Food and drinks", "Gratuities"],
-    bring: ["Closed-toe shoes", "Clothes you don't mind getting muddy", "Driver's licence"],
+    includes: ["Mask, snorkel, fins and vest", "In-water guide", "Boat and captain", "Bottled water"],
+    excludes: ["Underwater camera rental", "Gratuities"],
+    bring: ["Reef-safe sunscreen only", "Towel", "Swimsuit worn under your clothes"],
     itinerary: [
-      "Pickup at your ship or hotel",
-      "Safety briefing and machine assignment",
-      "Guided jungle trail ride",
-      "Ridge viewpoint stop",
-      "Beach swim stop",
-      "Return transfer"
+      "Meet your guide",
+      "Safety and snorkel briefing",
+      "First reef site",
+      "Surface break and water",
+      "Second reef site",
+      "Return"
     ],
-    good: ["Adventurous guests", "Couples", "Small groups of friends"],
-    note: "Drivers must be 18+ with a valid licence. Passengers 8+ on double machines."
+    good: ["Short port days", "First-time and nervous snorkelers", "Reef lovers"]
   },
   {
-    id: "botanical-sunset",
+    id: "nurse-sharks",
     active: true,
-    name: "Carambola Gardens Hike & West End Sunset",
-    tagline: "A shaded jungle climb, then the island's best sunset",
+    name: "Pigeon Cay: Snorkeling with Nurse Sharks",
+    tagline: "A remote white-sand cay off the East End, with sharks swimming beneath you",
+    category: "Water",
+    art: "reef",
+    photo: "",
+    minutes: 360,
+    price: 115, kids: 85,
+    group: "Up to 8 guests",
+    blurb: "If you want one experience in Roatán that you'll still be talking about years later, snorkeling with nurse sharks at Pigeon Cay should be high on your list. You take a boat out toward Roatán's remote East End, leaving the busy tourist areas behind. The water keeps getting clearer and brighter until you arrive at Pigeon Cay, a tiny white-sand cay surrounded by shallow turquoise Caribbean water and reef. Then you put on your mask, step into the water — and there are nurse sharks swimming underneath and around you.",
+    extra: "Nurse sharks are generally calm, bottom-dwelling sharks, and the experience is guided. You can snorkel above them while they cruise along the sandy bottom, and sometimes they pass surprisingly close underneath you. You don't need to be a scuba diver — this is warm, shallow, clear water. Pigeon Cay itself is part of the attraction: not a developed beach with hotels everywhere, but a remote little patch of white sand surrounded by that crazy blue Caribbean water. It feels much more like discovering somewhere than simply arriving at another tourist attraction.",
+    verdict: "You can visit beautiful beaches anywhere on the island. You can eat good food anywhere. You can snorkel beautiful coral in several places. But being able to say \"I went to a tiny cay in Honduras and snorkeled in crystal-clear water with nurse sharks swimming underneath me\" — that's different.",
+    highlights: [
+      "A scenic boat ride through crystal-clear lagoons to the remote Pigeon Cay",
+      "Snorkel above wild nurse sharks in shallow, clear water",
+      "Stingrays and reef life at the same site",
+      "No scuba certification needed — it's all shallow snorkelling",
+      "Combined with reef snorkelling and East End boat stops",
+      "Suitable for all ages"
+    ],
+    includes: ["Boat and crew", "Snorkel gear and vest", "Safety briefing", "In-water guides"],
+    excludes: ["Photo and video package", "Gratuities"],
+    bring: ["Swimsuit", "Towel", "Reef-safe sunscreen"],
+    itinerary: [
+      "Pickup at your ship or hotel",
+      "Check-in and full safety briefing",
+      "Scenic boat ride through the lagoons toward the East End",
+      "Arrive at Pigeon Cay",
+      "Guided snorkel with the nurse sharks and stingrays",
+      "Reef snorkelling and other marine-life stops",
+      "Return boat ride and transfer back"
+    ],
+    good: ["Families", "Adventurous guests", "Photographers", "Longer port days"],
+    note: "These are wild animals, so sightings can never be guaranteed 100% — though operators currently describe sightings at Pigeon Cay as common. Always follow your guide's instructions rather than touching, chasing or crowding the sharks. This trip runs 5–7 hours depending on the itinerary, so check it against your all-aboard time."
+  },
+  {
+    id: "mangrove-tour",
+    active: true,
+    name: "Mangrove Tunnel Tour",
+    tagline: "Secret mangrove tunnels on an authentic panga boat",
     category: "Nature",
     art: "jungle",
     photo: "",
-    minutes: 240,
-    price: 65, kids: 40,
+    minutes: 180,
+    price: 59, kids: 39,
     group: "Up to 12 guests",
-    blurb: "Carambola Botanical Gardens climbs the hillside opposite Sandy Bay — orchids, hardwoods, iguana rock and a lookout over Anthony's Key and the reef. We finish in West End for the sunset and time to walk the beach road.",
+    blurb: "Glide through secret mangrove tunnels on an authentic panga boat.",
     highlights: [
-      "Guided botanical garden walk",
-      "Hillside lookout over the reef",
-      "Orchid and hardwood collections",
-      "Free time in West End village",
-      "Sunset over the water"
+      "Narrow mangrove tunnels most visitors never see",
+      "Traditional panga boat",
+      "Birdlife and marine nursery habitat",
+      "Calm, shaded water — no swimming required",
+      "Gentle pace, minimal walking"
     ],
-    includes: ["Garden admission", "Naturalist guide", "Transport", "Water"],
+    includes: ["Panga boat and captain", "Local guide", "Bottled water", "Round-trip transport"],
     excludes: ["Food and drinks", "Gratuities"],
-    bring: ["Walking shoes", "Insect repellent", "Camera", "Cash for West End"],
+    bring: ["Camera", "Hat", "Insect repellent", "Sunscreen"],
     itinerary: [
-      "Pickup at your hotel",
-      "Drive to Carambola Gardens",
-      "Guided garden walk and lookout climb",
-      "Transfer to West End",
-      "Free time and sunset",
-      "Return transfer"
+      "Pickup at your ship or hotel",
+      "Drive to the boat launch",
+      "Panga through the mangrove tunnels",
+      "Birdwatching and photo stops",
+      "Return boat and transfer"
     ],
-    good: ["Hotel guests staying on-island", "Nature and photography lovers", "Evening availability"],
-    note: "Best suited to guests staying on the island — the sunset timing falls after most ships' all-aboard."
+    good: ["Non-swimmers", "Birdwatchers and photographers", "Older guests and young children"]
   },
   {
-    id: "private-custom",
+    id: "animal-encounters",
     active: true,
-    name: "Private Island Tour — Build Your Own",
-    tagline: "Your own guide and vehicle, your own itinerary",
-    category: "Private",
-    art: "culture",
+    name: "Animal Encounters",
+    tagline: "Sloths, monkeys and parrots at the island sanctuaries",
+    category: "Wildlife",
+    art: "wildlife",
+    photo: "",
+    minutes: 210,
+    price: 79, kids: 55,
+    group: "Up to 14 guests",
+    blurb: "Get ready for a heartwarming experience as you meet Roatán's most famous residents—the sloths, monkeys, and colorful parrots of our island sanctuaries.",
+    highlights: [
+      "Hold a sloth under the care of sanctuary staff",
+      "Capuchin monkeys and colourful parrots",
+      "Guided by keepers who know each animal",
+      "Shaded jungle setting",
+      "Photos taken by your guide throughout"
+    ],
+    includes: ["Sanctuary admission", "Round-trip transport", "Guide", "Bottled water"],
+    excludes: ["Sanctuary photo package", "Food and drinks", "Gratuities"],
+    bring: ["Camera", "Insect repellent", "Sunscreen"],
+    itinerary: [
+      "Pickup at your ship or hotel",
+      "Drive to the sanctuary",
+      "Guided encounters — sloths, monkeys, parrots",
+      "Time on the grounds",
+      "Return transfer"
+    ],
+    good: ["Families with kids", "Photographers", "Anyone who wants wildlife without a hike"]
+  },
+  {
+    id: "parasailing",
+    active: true,
+    name: "Sky-High Parasailing",
+    tagline: "A bird's-eye view of the Caribbean, above West Bay",
+    category: "Adventure",
+    art: "boat",
+    photo: "",
+    minutes: 120,
+    price: 89, kids: 69,
+    group: "Up to 6 guests",
+    blurb: "Experience ultimate freedom and panoramic island views as you glide through the sky above West Bay. A unique bird's-eye view of the Caribbean.",
+    highlights: [
+      "Parasail flight over West Bay",
+      "Panoramic views of the reef and coastline",
+      "Take off and land dry from the boat deck",
+      "Single or tandem flights",
+      "Our shortest tour — easy to fit into a tight port day"
+    ],
+    includes: ["Parasail flight", "Harness and life vest", "Boat and crew", "Safety briefing"],
+    excludes: ["Photo package", "Gratuities"],
+    bring: ["Sunglasses with a strap", "Sunscreen", "Light clothing"],
+    itinerary: [
+      "Meet at the West Bay dock",
+      "Safety briefing and harness fitting",
+      "Board the boat",
+      "Your flight",
+      "Return to dock"
+    ],
+    good: ["Tight port days", "Couples", "Guests who want a thrill without a full day"],
+    note: "Weight limits apply for single and tandem flights. Flights are weather-dependent — if wind conditions cancel your flight, you pay nothing."
+  },
+  {
+    id: "gumbalimba-park",
+    active: true,
+    name: "Gumbalimba Park",
+    tagline: "Roatán's favourite nature destination, right by West Bay",
+    category: "Wildlife",
+    art: "wildlife",
     photo: "",
     minutes: 300,
-    price: 0, kids: null,
-    priceNote: "Quoted per group — tell us your plan and we'll price it",
-    group: "1–6 guests, private",
-    blurb: "Tell us what you want to see and how long you have, and we'll build the day around it. Popular combinations are beach plus monkeys, or reef snorkel plus island history. Private vehicle, private guide, no other guests, and we build the schedule backwards from your all-aboard time.",
+    price: 85, kids: 60,
+    group: "Up to 14 guests",
+    blurb: "Discover Roatán's favorite nature destination. This immersive park combines wildlife encounters, tropical gardens, and history into one unforgettable adventure right by West Bay.",
     highlights: [
-      "Private vehicle and guide for your group only",
-      "Itinerary built around your interests",
-      "Flexible start and finish times",
-      "Ideal for families and mobility needs",
-      "Schedule planned around your ship"
+      "Capuchin monkey and macaw encounters",
+      "Tropical botanical gardens",
+      "Island and pirate history exhibits",
+      "Suspension bridge and jungle trails",
+      "Beach access right by West Bay"
     ],
-    includes: ["Private air-conditioned vehicle", "Private bilingual guide", "Fuel and parking", "Bottled water"],
-    excludes: ["Attraction admissions", "Food and drinks", "Gratuities"],
-    bring: ["Whatever your chosen activities need — we'll tell you when we confirm"],
+    includes: ["Park admission", "Round-trip transport", "Guide", "Beach access", "Bottled water"],
+    excludes: ["Lunch", "Park photo package", "Gratuities"],
+    bring: ["Camera", "Reef-safe sunscreen", "Insect repellent", "Cash for lunch"],
     itinerary: [
-      "We contact you before your visit to plan the day",
-      "Pickup at your ship, hotel or the airport",
-      "Your chosen stops, at your pace",
-      "Return with buffer time built in"
+      "Pickup at your ship or hotel",
+      "Drive to the park",
+      "Guided wildlife encounters",
+      "Botanical gardens and history trail",
+      "Beach and swim time",
+      "Return transfer"
     ],
-    good: ["Families", "Guests with mobility needs", "Repeat visitors", "Anyone with a specific plan"]
+    good: ["Families with kids", "First-time visitors", "Photographers"]
+  },
+  {
+    id: "yacht-tour",
+    active: true,
+    name: "Exclusive Yacht Tour",
+    tagline: "A private yacht, snorkelling and sunset views",
+    category: "Private",
+    art: "boat",
+    photo: "",
+    minutes: 360,
+    price: 0, kids: null,
+    priceNote: "Quoted per group — tell us your dates and party size",
+    group: "Private charter",
+    blurb: "Set sail on a private yacht for an unforgettable day of luxury, snorkeling, and sunset views. The ultimate high-end tropical experience for families and groups.",
+    highlights: [
+      "Private yacht charter for your group only",
+      "Snorkelling stops at the reef",
+      "Sunset on the water",
+      "Crew and captain throughout",
+      "Itinerary built around you"
+    ],
+    includes: ["Private yacht and crew", "Snorkel gear", "Fuel", "Round-trip transport"],
+    excludes: ["Catering and drinks (ask us — we can arrange it)", "Gratuities"],
+    bring: ["Swimsuit", "Towel", "Reef-safe sunscreen", "Light layer for the evening"],
+    itinerary: [
+      "We plan the day with you in advance",
+      "Pickup at your ship, hotel or the airport",
+      "Board the yacht",
+      "Snorkel stops and time on the water",
+      "Sunset",
+      "Return to dock and transfer back"
+    ],
+    good: ["Special occasions", "Families and groups", "Guests staying on the island"]
+  },
+  {
+    id: "zip-line",
+    active: true,
+    name: "Zip Line — Randy's Jungles Top",
+    tagline: "Dense foliage, big views, and a lot of adrenaline",
+    category: "Adventure",
+    art: "adventure",
+    photo: "",
+    minutes: 240,
+    price: 85, kids: 60,
+    group: "Up to 12 guests",
+    blurb: "Brave the Randy's Jungles Top Zip Line for an exhilarating ride through dense foliage and vibrant landscapes. This heart-pounding attraction offers a unique blend of nature and adrenaline for thrill-seekers of all skill levels.",
+    highlights: [
+      "Multi-line canopy course through dense jungle",
+      "Treetop platforms with island views",
+      "Suits all skill levels, including first-timers",
+      "All safety gear and briefing included",
+      "Round-trip transport"
+    ],
+    includes: ["Zip line circuit", "Harness, helmet and gloves", "Certified guides", "Round-trip transport"],
+    excludes: ["Food and drinks", "Photo package", "Gratuities"],
+    bring: ["Closed-toe shoes (required)", "Comfortable clothes", "Sunscreen"],
+    itinerary: [
+      "Pickup at your ship or hotel",
+      "Drive to the course",
+      "Safety briefing and gear fitting",
+      "Zip line circuit with your guides",
+      "Return transfer"
+    ],
+    good: ["Active guests", "Teens and older kids", "First-time zipliners"],
+    note: "Weight and age limits apply. Closed-toe shoes are required — no sandals on the course."
   }
 ];
