@@ -111,15 +111,23 @@
         '" loading="lazy"></a>').join("") +
         "</div>";
     }
-    if (t.video) {
-      out += '<figure class="vid">' +
-        '<video controls preload="metadata" playsinline' +
-        (t.photo ? ' poster="assets/img/' + esc(t.photo) + '"' : "") + '>' +
-        '<source src="assets/video/' + esc(t.video) + '" type="video/mp4">' +
-        "Your browser can't play this video." +
-        "</video>" +
-        (t.videoCaption ? "<figcaption>" + esc(t.videoCaption) + "</figcaption>" : "") +
-        "</figure>";
+    // videos: either a single `video` string, or a `videos` array of
+    // { file, caption, poster }. preload="metadata" means nothing is
+    // downloaded until a visitor actually presses play.
+    const clips = (t.videos && t.videos.length)
+      ? t.videos
+      : (t.video ? [{ file: t.video, caption: t.videoCaption, poster: t.photo }] : []);
+
+    if (clips.length) {
+      out += '<div class="vids">' + clips.map((v) =>
+        '<figure class="vid">' +
+          '<video controls preload="metadata" playsinline' +
+          (v.poster ? ' poster="assets/img/' + esc(v.poster) + '"' : "") + '>' +
+          '<source src="assets/video/' + esc(v.file) + '" type="video/mp4">' +
+          "Your browser can't play this video." +
+          "</video>" +
+          (v.caption ? "<figcaption>" + esc(v.caption) + "</figcaption>" : "") +
+        "</figure>").join("") + "</div>";
     }
     return out;
   }

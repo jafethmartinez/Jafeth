@@ -486,3 +486,8 @@ select{
 .vid video{ width:100%; border-radius:var(--radius-lg); display:block;
   background:var(--ink); box-shadow:var(--shadow); }
 .vid figcaption{ font-size:.88rem; color:var(--ink-faint); margin-top:10px; text-align:center; }
+
+/* multiple clips sit side by side on wide screens, stacked on phones */
+.vids{ display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin:24px 0; }
+.vids .vid{ margin:0; }
+.vids video{ aspect-ratio:9/16; object-fit:cover; background:var(--ink); }

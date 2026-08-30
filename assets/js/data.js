@@ -118,7 +118,23 @@ const TOURS = [
     tagline: "The Garifuna community of Punta Gorda, on its own terms",
     category: "Culture",
     art: "culture",
-    photo: "",
+    // The Garífuna Arrival Day landing is the hero + tours-page card image.
+    photo: "cultural-arrival-day.jpg",
+    gallery: [
+      "cultural-arrival-day.jpg",
+      "cultural-museum-drums.jpg",
+      "cultural-food.jpg",
+      "cultural-guifiti.jpg",
+      "cultural-village.jpg"
+    ],
+    videos: [
+      { file: "cultural-dance.mp4",  poster: "cultural-dance-poster.jpg",
+        caption: "The Punta dance in Punta Gorda" },
+      { file: "cultural-drums.mp4",  poster: "cultural-drums-poster.jpg",
+        caption: "Garífuna drumming — music as living history" },
+      { file: "cultural-museum.mp4", poster: "cultural-museum-poster.jpg",
+        caption: "Inside the community museum" }
+    ],
     minutes: 300,
     price: 69, kids: 45,
     group: "Up to 14 guests",
