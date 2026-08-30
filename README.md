@@ -133,18 +133,36 @@ widget on the tour pages.
 
 ## Publishing it free with GitHub Pages
 
-1. Push this repo to GitHub
-2. **Settings → Pages**
-3. Source: **Deploy from a branch**, branch **main**, folder **/ (root)**
-4. Wait about a minute
+A deploy workflow is already set up at `.github/workflows/pages.yml`. It
+publishes the whole site on every push.
 
-Your site will be at `https://<username>.github.io/<repo>/`.
+**It needs you to switch Pages on once first** — creating a Pages site requires
+repository-admin rights, which an automated token isn't allowed to do. One time,
+then never again:
 
-To use your own domain (e.g. `exploreroatan.com`), buy it, add a `CNAME` file
-containing just the domain, and point the domain's DNS at GitHub Pages.
-It's free apart from the domain itself, which is roughly $12/year.
+1. Go to **https://github.com/jafethmartinez/Jafeth/settings/pages**
+2. Under **Build and deployment → Source**, choose **GitHub Actions**
+3. That's it — no other fields to fill in
 
----
+Then re-run the deploy:
+
+- Go to **https://github.com/jafethmartinez/Jafeth/actions**
+- Click **Deploy site to GitHub Pages** → the most recent run → **Re-run all jobs**
+
+Your site will be live at:
+
+```
+https://jafethmartinez.github.io/Jafeth/
+```
+
+From then on it redeploys automatically every time anything is pushed.
+
+### Using your own domain
+
+Wix flagged that **exploreroatanoutfitters.com** is available. Once you own a
+domain, add a file called `CNAME` at the top of this repo containing just the
+domain (no `https://`, no slashes), then point the domain's DNS at GitHub Pages.
+Free apart from the domain itself, roughly $12/year.
 
 ## Local preview
 
