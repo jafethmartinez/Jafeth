@@ -284,7 +284,12 @@ const TOURS = [
     tagline: "Secret mangrove tunnels on an authentic panga boat",
     category: "Nature",
     art: "jungle",
-    photo: "",
+    photo: "mangrove-boat.jpg",
+    gallery: ["mangrove-boat.jpg"],
+    videos: [
+      { file: "mangrove-tunnel.mp4", poster: "mangrove-poster.jpg",
+        caption: "Gliding through the mangrove tunnels by panga" }
+    ],
     minutes: 180,
     price: 59, kids: 39,
     group: "Up to 12 guests",
