@@ -171,7 +171,17 @@ const TOURS = [
     tagline: "See the reef without getting wet",
     category: "Family",
     art: "boat",
-    photo: "",
+    photo: "glass-boat-aerial.jpg",
+    gallery: [
+      "glass-boat-aerial.jpg",
+      "glass-window-fish.jpg",
+      "glass-interior.jpg",
+      "glass-guests.jpg"
+    ],
+    videos: [
+      { file: "glass-bottom-reef.mp4", poster: "glass-video-poster.jpg",
+        caption: "The reef passing beneath the glass" }
+    ],
     minutes: 150,
     price: 59, kids: 39,
     group: "Up to 16 guests",
