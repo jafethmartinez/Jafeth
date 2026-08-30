@@ -206,6 +206,11 @@ const TOURS = [
     category: "Water",
     art: "reef",
     photo: "",
+    // ✏️ Real photos from the tour. Drop files in assets/img/ and list them here.
+    //    The first one becomes the card image on the tours page.
+    gallery: [],
+    video: "nurse-sharks.mp4",
+    videoCaption: "Nurse sharks at Pigeon Cay — filmed on one of our trips",
     minutes: 360,
     price: 115, kids: 85,
     group: "Up to 8 guests",

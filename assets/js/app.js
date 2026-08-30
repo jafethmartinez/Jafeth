@@ -92,11 +92,35 @@
   }
 
   function media(t) {
-    if (t.photo) {
-      return '<img src="assets/img/' + esc(t.photo) + '" alt="' + esc(t.name) +
+    const first = t.photo || (t.gallery && t.gallery.length ? t.gallery[0] : "");
+    if (first) {
+      return '<img src="assets/img/' + esc(first) + '" alt="' + esc(t.name) +
              '" loading="lazy" width="400" height="250">';
     }
     return art(t.art);
+  }
+
+  /* Photo gallery + video for a tour detail page */
+  function galleryBlock(t) {
+    let out = "";
+    const shots = (t.gallery || []).filter((g) => g !== t.photo);
+    if (shots.length) {
+      out += '<div class="shots">' + shots.map((g) =>
+        '<a class="shots__i" href="assets/img/' + esc(g) + '" target="_blank" rel="noopener">' +
+        '<img src="assets/img/' + esc(g) + '" alt="' + esc(t.name) + '" loading="lazy"></a>').join("") +
+        "</div>";
+    }
+    if (t.video) {
+      out += '<figure class="vid">' +
+        '<video controls preload="metadata" playsinline' +
+        (t.photo ? ' poster="assets/img/' + esc(t.photo) + '"' : "") + '>' +
+        '<source src="assets/video/' + esc(t.video) + '" type="video/mp4">' +
+        "Your browser can't play this video." +
+        "</video>" +
+        (t.videoCaption ? "<figcaption>" + esc(t.videoCaption) + "</figcaption>" : "") +
+        "</figure>";
+    }
+    return out;
   }
 
   /* =====================================================================
@@ -423,6 +447,7 @@
       '<div class="detail">' +
         "<div>" +
           '<div class="detail__media">' + media(t) + "</div>" +
+          galleryBlock(t) +
           fitNote +
           '<div class="speclist">' +
             '<div><div class="spec__k">Duration</div><div class="spec__v">' + dur(t.minutes) + "</div></div>" +
