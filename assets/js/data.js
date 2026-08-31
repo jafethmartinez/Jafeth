@@ -120,6 +120,7 @@ const TOURS = [
     art: "culture",
     // The Garífuna Arrival Day landing is the hero + tours-page card image.
     photo: "cultural-arrival-day.jpg",
+    focus: "center 70%",
     gallery: [
       "cultural-arrival-day.jpg",
       "cultural-museum-drums.jpg",
@@ -213,6 +214,7 @@ const TOURS = [
     category: "Water",
     art: "reef",
     photo: "snorkel-shallows.jpg",
+    focus: "center 65%",
     gallery: ["snorkel-shallows.jpg"],
     videos: [
       { file: "snorkel-reef.mp4", poster: "snorkel-video-poster.jpg",
@@ -336,6 +338,7 @@ const TOURS = [
     category: "Wildlife",
     art: "wildlife",
     photo: "animal-sloth-hold.jpg",
+    focus: "center 60%",
     gallery: [
       "animal-sloth-hold.jpg",
       "animal-capuchins.jpg",
@@ -449,6 +452,10 @@ const TOURS = [
     category: "Private",
     art: "boat",
     photo: "yacht-underway.jpg",
+    // ✏️ `focus` shifts the crop of a tall photo in the wide hero/card box.
+    //    "center 15%" pulls the view up so the whole boat shows.
+    //    Lower % = show more of the top. Default when unset is "center 50%".
+    focus: "center 15%",
     gallery: [
       "yacht-underway.jpg",
       "yacht-helm.jpg",
