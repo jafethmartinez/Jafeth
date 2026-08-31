@@ -377,7 +377,14 @@ const TOURS = [
     tagline: "A bird's-eye view of the Caribbean, above West Bay",
     category: "Adventure",
     art: "boat",
-    photo: "",
+    photo: "para-flight.jpg",
+    gallery: [
+      "para-flight.jpg",
+      "para-couple-air.jpg",
+      "para-solo-air.jpg",
+      "para-boat.jpg",
+      "para-ready.jpg"
+    ],
     minutes: 120,
     price: 89, kids: 69,
     group: "Up to 6 guests",
