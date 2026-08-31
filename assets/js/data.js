@@ -448,7 +448,16 @@ const TOURS = [
     tagline: "A private yacht, snorkelling and sunset views",
     category: "Private",
     art: "boat",
-    photo: "",
+    photo: "yacht-underway.jpg",
+    gallery: [
+      "yacht-underway.jpg",
+      "yacht-helm.jpg",
+      "yacht-lounge.jpg",
+      "yacht-cockpit.jpg",
+      "yacht-cabin.jpg",
+      "yacht-marina.jpg",
+      "yacht-sunset.jpg"
+    ],
     minutes: 360,
     price: 0, kids: null,
     priceNote: "Quoted per group — tell us your dates and party size",
