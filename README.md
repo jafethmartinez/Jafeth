@@ -1,4 +1,4 @@
-# Explore Roatán — tour booking website
+# Roatán Hideaways — tour booking website
 
 A fast, static website for a locally owned tour company on Roatán, Honduras,
 built around one idea: **cruise passengers are on a clock.** Every page is
@@ -31,7 +31,7 @@ booking form.
 
 ```js
 const SITE = {
-  name:     "Explore Roatán",
+  name:     "Roatán Hideaways",
   whatsapp: "16892870134",          // Jafeth's number, from your Wix site
   phone:    "+1 689-287-0134",
   email:    "emilmartinez938@yahoo.com",

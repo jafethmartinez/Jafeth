@@ -4,7 +4,7 @@
    site — change it here once and every page updates.
    ===================================================================== */
 const SITE = {
-  name: "Explore Roatán",
+  name: "Roatán Hideaways",
   tagline: "Unparalleled local insights and tropical adventures await you in the heart of Honduras",
   // Jafeth's number — digits only, no + or spaces. (+1 689 287 0134)
   whatsapp: "16892870134",
