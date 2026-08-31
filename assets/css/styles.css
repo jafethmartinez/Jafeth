@@ -491,3 +491,8 @@ select{
 .vids{ display:grid; gap:18px; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); margin:24px 0; }
 .vids .vid{ margin:0; }
 .vids video{ aspect-ratio:9/16; object-fit:cover; background:var(--ink); }
+
+/* ---------- family photo on the about page ---------- */
+.famshot{ margin:0 0 22px; }
+.famshot img{ width:100%; border-radius:var(--radius-lg); display:block; box-shadow:var(--shadow); }
+.famshot figcaption{ font-size:.88rem; color:var(--ink-faint); text-align:center; margin-top:10px; }

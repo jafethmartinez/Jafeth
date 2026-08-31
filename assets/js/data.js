@@ -22,9 +22,9 @@ const SITE = {
    ✏️ Add photos: drop them in assets/img/ and put the filename in `photo`
    ===================================================================== */
 const TEAM = [
-  { name: "Jafeth Martinez",  role: "CEO",      phone: "689-287-0134",   note: "iMessage and WhatsApp", email: "emilmartinez938@yahoo.com", photo: "" },
-  { name: "Oscar Martinez",   role: "Co-owner", phone: "+504 9989-2430", note: "", email: "", photo: "" },
-  { name: "Mireska Martinez", role: "Co-owner", phone: "+504 9783-5574", note: "", email: "", photo: "" }
+  { name: "Jafeth Martinez",  role: "CEO",      phone: "689-287-0134",   note: "iMessage and WhatsApp", email: "emilmartinez938@yahoo.com", photo: "team-jafeth.jpg" },
+  { name: "Oscar Martinez",   role: "Co-owner", phone: "+504 9989-2430", note: "", email: "", photo: "team-oscar.jpg" },
+  { name: "Mireska Martinez", role: "Co-owner", phone: "+504 9783-5574", note: "", email: "", photo: "team-mireska.jpg" }
 ];
 
 /* =====================================================================
