@@ -419,7 +419,17 @@ const TOURS = [
     tagline: "Roatán's favourite nature destination, right by West Bay",
     category: "Wildlife",
     art: "wildlife",
-    photo: "",
+    // Photographs supplied by Gumbalimba Park; the owners confirmed permission to use them.
+    photo: "gumbalimba-bridge.jpg",
+    gallery: [
+      "gumbalimba-bridge.jpg",
+      "gumbalimba-entrance.jpg",
+      "gumbalimba-capuchins.jpg",
+      "gumbalimba-monkey-guest.jpg",
+      "gumbalimba-cave.jpg",
+      "gumbalimba-cave-guests.jpg",
+      "gumbalimba-relief-map.jpg"
+    ],
     minutes: 300,
     price: 85, kids: 60,
     group: "Up to 14 guests",
