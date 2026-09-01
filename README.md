@@ -1,4 +1,4 @@
-# Roatán Hideaways — tour booking website
+# Martinez Roatan Travel — tour booking website
 
 A fast, static website for a locally owned tour company on Roatán, Honduras,
 built around one idea: **cruise passengers are on a clock.** Every page is
@@ -31,7 +31,7 @@ booking form.
 
 ```js
 const SITE = {
-  name:     "Roatán Hideaways",
+  name:     "Martinez Roatan Travel",
   whatsapp: "16892870134",          // Jafeth's number, from your Wix site
   phone:    "+1 689-287-0134",
   email:    "emilmartinez938@yahoo.com",
@@ -56,6 +56,30 @@ Then:
    many countries and it's the fastest way to lose a Tripadvisor listing.
 
 ---
+
+## Changing the business name
+
+The name lives in two kinds of place. `SITE.name` in `assets/js/data.js`
+drives the header and footer on every page automatically. The rest are
+static so that search engines and social previews see them without running
+JavaScript:
+
+- `assets/js/data.js` — `SITE.name`
+- `<title>` and `og:title` in `about.html`, `book.html`, `contact.html`,
+  `tour.html`, `404.html`
+- the `<meta name="description">` on `about.html`
+- the story paragraph on `about.html` and the matching one on `index.html`
+- this README
+
+To find every one of them:
+
+```bash
+grep -rn "Martinez Roatan Travel" --include='*.html' --include='*.js' --include='*.md' .
+```
+
+Take care with the Pristine Snorkeling description, which begins "Explore
+Roatán's vibrant coral reef" — that is the word explore, not an old brand
+name, and should not be swept up in a rename.
 
 ## Adding, editing and removing tours
 
