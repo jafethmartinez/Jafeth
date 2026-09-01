@@ -1,4 +1,4 @@
-# Martinez Roatan Travel — tour booking website
+# Roatan Roots Travel — tour booking website
 
 A fast, static website for a locally owned tour company on Roatán, Honduras,
 built around one idea: **cruise passengers are on a clock.** Every page is
@@ -31,7 +31,7 @@ booking form.
 
 ```js
 const SITE = {
-  name:     "Martinez Roatan Travel",
+  name:     "Roatan Roots Travel",
   whatsapp: "16892870134",          // Jafeth's number, from your Wix site
   phone:    "+1 689-287-0134",
   email:    "emilmartinez938@yahoo.com",
@@ -74,7 +74,7 @@ JavaScript:
 To find every one of them:
 
 ```bash
-grep -rn "Martinez Roatan Travel" --include='*.html' --include='*.js' --include='*.md' .
+grep -rn "Roatan Roots Travel" --include='*.html' --include='*.js' --include='*.md' .
 ```
 
 Take care with the Pristine Snorkeling description, which begins "Explore
