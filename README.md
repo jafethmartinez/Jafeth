@@ -231,7 +231,7 @@ python3 -m http.server 8000
 
 - **No tracking, no cookies, no analytics.** Nothing to disclose, nothing to
   consent to. Add analytics later if you want it.
-- **Accessible** — semantic HTML, keyboard navigable, labelled form fields,
+- **Accessible** — semantic HTML, keyboard navigable, labeled form fields,
   visible focus rings, skip link, screen-reader friendly.
 - **Fast** — one CSS file, two small JS files, illustrations are inline SVG.
   Loads on bad ship wifi.

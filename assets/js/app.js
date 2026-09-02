@@ -95,7 +95,7 @@
     const first = t.photo || (t.gallery && t.gallery.length ? t.gallery[0] : "");
     if (first) {
       // `focus` frames a tall photo inside the wide hero/card box. Without it
-      // the browser centres the crop, which can slice the subject in half.
+      // the browser centers the crop, which can slice the subject in half.
       const pos = t.focus ? ' style="object-position:' + esc(t.focus) + '"' : "";
       return '<img class="tour-img" data-art="' + esc(t.art) + '" src="assets/img/' + esc(first) +
              '" alt="' + esc(t.name) + '"' + pos + ' loading="lazy" width="400" height="250">';

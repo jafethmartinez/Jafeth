@@ -225,7 +225,7 @@ const TOURS = [
     group: "Up to 10 guests",
     blurb: "Explore Roatán's vibrant coral reef up close with guided snorkeling at some of the island's best spots. Encounter colorful marine life in crystal-clear waters.",
     highlights: [
-      "Guided snorkelling on the Mesoamerican Barrier Reef",
+      "Guided snorkeling on the Mesoamerican Barrier Reef",
       "The island's best spots, chosen on the day for conditions",
       "In-water guide who points out what you're seeing",
       "All gear included",
@@ -275,8 +275,8 @@ const TOURS = [
       "A scenic boat ride through crystal-clear lagoons to the remote Pigeon Cay",
       "Snorkel above wild nurse sharks in shallow, clear water",
       "Stingrays and reef life at the same site",
-      "No scuba certification needed — it's all shallow snorkelling",
-      "Combined with reef snorkelling and East End boat stops",
+      "No scuba certification needed — it's all shallow snorkeling",
+      "Combined with reef snorkeling and East End boat stops",
       "Suitable for all ages"
     ],
     includes: ["Boat and crew", "Snorkel gear and vest", "Safety briefing", "In-water guides"],
@@ -288,7 +288,7 @@ const TOURS = [
       "Scenic boat ride through the lagoons toward the East End",
       "Arrive at Pigeon Cay",
       "Guided snorkel with the nurse sharks and stingrays",
-      "Reef snorkelling and other marine-life stops",
+      "Reef snorkeling and other marine-life stops",
       "Return boat ride and transfer back"
     ],
     good: ["Families", "Adventurous guests", "Photographers", "Longer port days"],
@@ -356,7 +356,7 @@ const TOURS = [
     blurb: "Get ready for a heartwarming experience as you meet Roatán's most famous residents—the sloths, monkeys, and colorful parrots of our island sanctuaries.",
     highlights: [
       "Hold a sloth under the care of sanctuary staff",
-      "Capuchin monkeys and colourful parrots",
+      "Capuchin monkeys and colorful parrots",
       "Guided by keepers who know each animal",
       "Shaded jungle setting",
       "Photos taken by your guide throughout"
@@ -416,7 +416,7 @@ const TOURS = [
     id: "gumbalimba-park",
     active: true,
     name: "Gumbalimba Park",
-    tagline: "Roatán's favourite nature destination, right by West Bay",
+    tagline: "Roatán's favorite nature destination, right by West Bay",
     category: "Wildlife",
     art: "wildlife",
     // Photographs supplied by Gumbalimba Park; the owners confirmed permission to use them.
@@ -458,7 +458,7 @@ const TOURS = [
     id: "yacht-tour",
     active: true,
     name: "Exclusive Yacht Tour",
-    tagline: "A private yacht, snorkelling and sunset views",
+    tagline: "A private yacht, snorkeling and sunset views",
     category: "Private",
     art: "boat",
     photo: "yacht-underway.jpg",
@@ -482,7 +482,7 @@ const TOURS = [
     blurb: "Set sail on a private yacht for an unforgettable day of luxury, snorkeling, and sunset views. The ultimate high-end tropical experience for families and groups.",
     highlights: [
       "Private yacht charter for your group only",
-      "Snorkelling stops at the reef",
+      "Snorkeling stops at the reef",
       "Sunset on the water",
       "Crew and captain throughout",
       "Itinerary built around you"
