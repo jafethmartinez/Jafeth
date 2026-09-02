@@ -496,3 +496,9 @@ select{
 .famshot{ margin:0 0 22px; }
 .famshot img{ width:100%; border-radius:var(--radius-lg); display:block; box-shadow:var(--shadow); }
 .famshot figcaption{ font-size:.88rem; color:var(--ink-faint); text-align:center; margin-top:10px; }
+
+/* ---------- the family's own connection to a tour ---------- */
+.personal{ background:#fff6e2; border-left:4px solid var(--coral); border-radius:0 var(--radius-lg) var(--radius-lg) 0;
+  padding:22px 26px; margin-top:26px; }
+.personal h3{ font-size:1.05rem; margin-bottom:.4em; color:#7a3a12; }
+.personal p{ margin:0; color:#5c3a1e; font-size:1.02rem; }

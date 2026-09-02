@@ -141,7 +141,9 @@ const TOURS = [
     group: "Up to 14 guests",
     blurb: "If you want to discover the vibrant heart of the island beyond its sandy shores, Punta Gorda is your essential first stop. As the oldest Garífuna settlement in Honduras, this village offers a deep connection to a heritage that is as resilient as it is beautiful.",
     extra: "Located on the scenic eastern coast, Punta Gorda was established in 1797. After being exiled from St. Vincent, the Garífuna people arrived in dugout canoes, preserving a unique fusion of African and Indigenous Caribbean traditions that remain the lifeblood of the community today. From the moment you arrive, the pulse of the drums will draw you in. For the Garífuna, music is a living history — traditional beats accompany soulful songs in their native tongue and the energetic Punta dance. These movements are a celebration of joy and survival, so if someone invites you to join in, embrace the moment.",
-    verdict: "This village offers a rare opportunity to engage with a culture that has flourished for over two centuries. When you visit, you aren't just a tourist — you are a guest in a story that has been told for 225 years. Come with an open heart, leave with a new rhythm in your step.",
+    verdict: "This village offers a rare opportunity to engage with a culture that has flourished for over two centuries. When you visit, you aren't just a tourist — you are a guest in a story that has been told for 229 years. Come with an open heart, leave with a new rhythm in your step.",
+    // Our own connection to this tour — the reason it is not a stop on an itinerary for us.
+    personal: "Our family is Garífuna, and Punta Gorda is where we are from. Our people landed on this coast in 1797, and we have been here the 229 years since. When we bring you here, we are bringing you home.",
     highlights: [
       "Punta Gorda — the oldest Garífuna settlement in Honduras, established 1797",
       "Traditional drumming and the energetic Punta dance",

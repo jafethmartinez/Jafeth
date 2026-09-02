@@ -503,6 +503,7 @@
           "<h2>What to bring</h2>" + list(t.bring) +
           "<h2>Who this suits</h2>" + list(t.good) +
           (t.verdict ? '<div class="verdict"><h3>The verdict</h3><p>' + esc(t.verdict) + "</p></div>" : "") +
+          (t.personal ? '<div class="personal"><h3>Why this one is ours</h3><p>' + esc(t.personal) + "</p></div>" : "") +
         "</div>" +
         "<aside>" +
           '<div class="bookbox">' + priceRow +
