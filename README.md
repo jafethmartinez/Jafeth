@@ -173,20 +173,48 @@ Then re-run the deploy:
 - Go to **https://github.com/jafethmartinez/Jafeth/actions**
 - Click **Deploy site to GitHub Pages** → the most recent run → **Re-run all jobs**
 
-Your site will be live at:
+Your site is live at:
 
 ```
-https://jafethmartinez.github.io/Jafeth/
+https://martinezeastendtours.com
 ```
+
+The GitHub-provided address, `https://jafethmartinez.github.io/Jafeth/`,
+redirects to it.
 
 From then on it redeploys automatically every time anything is pushed.
 
-### Using your own domain
+### The custom domain
 
-Wix flagged that **exploreroatanoutfitters.com** is available. Once you own a
-domain, add a file called `CNAME` at the top of this repo containing just the
-domain (no `https://`, no slashes), then point the domain's DNS at GitHub Pages.
-Free apart from the domain itself, roughly $12/year.
+The site is served at **https://martinezeastendtours.com**.
+
+Two things make that work, and both are already in place on the repo side:
+
+- the `CNAME` file at the top of this repo, containing just the domain
+- the domain's DNS records, pointed at GitHub (set at the registrar,
+  Porkbun)
+
+**DNS records at Porkbun:**
+
+| Type | Host | Answer |
+|---|---|---|
+| A | *(leave blank)* | `185.199.108.153` |
+| A | *(leave blank)* | `185.199.109.153` |
+| A | *(leave blank)* | `185.199.110.153` |
+| A | *(leave blank)* | `185.199.111.153` |
+| CNAME | `www` | `jafethmartinez.github.io` |
+
+The four A records are GitHub's Pages servers and are the same for every
+GitHub Pages site. Verify them against GitHub's current documentation if
+they ever stop resolving.
+
+Then in **Settings → Pages → Custom domain**, enter the domain and, once
+the certificate has been issued, tick **Enforce HTTPS**. The certificate
+is free and automatic; it can take up to a day to appear, though it is
+usually much faster.
+
+If the domain is ever changed, the `CNAME` file must change with it, or
+GitHub will keep serving the old one.
 
 ## Local preview
 
