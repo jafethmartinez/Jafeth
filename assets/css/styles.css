@@ -494,7 +494,8 @@ select{
 
 /* ---------- family photo on the about page ---------- */
 .famshot{ margin:0 0 22px; }
-.famshot img{ width:100%; border-radius:var(--radius-lg); display:block; box-shadow:var(--shadow); }
+.famshot img{ width:100%; max-height:340px; object-fit:cover; object-position:center 40%;
+  border-radius:var(--radius-lg); display:block; box-shadow:var(--shadow); }
 .famshot figcaption{ font-size:.88rem; color:var(--ink-faint); text-align:center; margin-top:10px; }
 
 /* ---------- the family's own connection to a tour ---------- */
@@ -510,3 +511,8 @@ select{
 /* ---------- the full crest, where there is room to read it ---------- */
 .crestshot{ margin:0 0 24px; text-align:center; }
 .crestshot img{ width:100%; max-width:230px; height:auto; display:inline-block; }
+
+/* ---------- supporting family snapshots ---------- */
+.famgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:0 0 22px; }
+.famgrid img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px;
+  box-shadow:var(--shadow-sm); }
