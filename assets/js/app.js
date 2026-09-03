@@ -240,12 +240,20 @@
     return "https://wa.me/" + SITE.whatsapp + "?text=" + encodeURIComponent(msg);
   }
 
+  /* iMessage / SMS link. iOS wants &body=, Android wants ?body=;
+     "?&body=" satisfies both. */
+  function smsLink(text) {
+    const msg = text || ("Hi " + SITE.name + "! I'd like to ask about a tour in Roatán.");
+    return "sms:" + (SITE.sms || "") + "?&body=" + encodeURIComponent(msg);
+  }
+
   function hydrateSite() {
     $$("[data-site]").forEach((el) => {
       const v = SITE[el.getAttribute("data-site")];
       if (v) el.textContent = v;
     });
     $$("[data-wa]").forEach((el) => { el.href = waLink(el.getAttribute("data-wa") || ""); });
+    $$("[data-sms]").forEach((el) => { el.href = smsLink(el.getAttribute("data-sms") || ""); });
     $$("[data-mailto]").forEach((el) => {
       el.href = "mailto:" + SITE.email;
       if (!el.textContent.trim()) el.textContent = SITE.email;
@@ -417,6 +425,7 @@
           '<a class="btn btn--wa" data-wa="" href="#">Message us on WhatsApp</a></div>';
 
       $$("[data-wa]", grid).forEach((el) => { el.href = waLink(); });
+      $$("[data-sms]", grid).forEach((el) => { el.href = smsLink(); });
       wireImageFallbacks(grid);
     }
 
@@ -515,7 +524,8 @@
               '<div class="bookbox__row"><dt>Pickup</dt><dd>Ship, hotel or airport</dd></div>' +
             "</dl>" +
             '<a class="btn btn--primary btn--block btn--lg" href="book.html?tour=' + esc(t.id) + '">Request this tour</a>' +
-            '<a class="btn btn--wa btn--block" style="margin-top:10px" id="tourWa" href="#">Ask a question on WhatsApp</a>' +
+            '<a class="btn btn--wa btn--block" style="margin-top:10px" id="tourWa" href="#">Ask on WhatsApp</a>' +
+            '<a class="btn btn--sms btn--block" style="margin-top:8px" id="tourSms" href="#">Ask by text or iMessage</a>' +
             '<p class="hint" style="margin:14px 0 0;text-align:center">No payment now — we confirm by message first.</p>' +
           "</div>" +
         "</aside>" +
@@ -523,7 +533,9 @@
 
     wireImageFallbacks(root);
 
-    $("#tourWa").href = waLink("Hi " + SITE.name + "! I have a question about the \"" + t.name + "\" tour.");
+    const ask = "Hi " + SITE.name + "! I have a question about the \"" + t.name + "\" tour.";
+    $("#tourWa").href = waLink(ask);
+    $("#tourSms").href = smsLink(ask);
   }
 
   /* =====================================================================
@@ -680,6 +692,7 @@
 
       $("#sentMsg").textContent = msg;
       $("#waSend").href = "https://wa.me/" + SITE.whatsapp + "?text=" + encodeURIComponent(msg);
+      $("#smsSend").href = smsLink(msg);
       $("#mailSend").href = "mailto:" + SITE.email +
         "?subject=" + encodeURIComponent("Booking request: " + t.name + " on " + form.date.value) +
         "&body=" + encodeURIComponent(msg);

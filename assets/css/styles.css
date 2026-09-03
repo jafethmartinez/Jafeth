@@ -502,3 +502,7 @@ select{
   padding:22px 26px; margin-top:26px; }
 .personal h3{ font-size:1.05rem; margin-bottom:.4em; color:#7a3a12; }
 .personal p{ margin:0; color:#5c3a1e; font-size:1.02rem; }
+
+/* ---------- iMessage / SMS button ---------- */
+.btn--sms{ background:#0d7d90; color:#fff; box-shadow:0 3px 12px rgba(13,125,144,.28); }
+.btn--sms:hover{ background:var(--sea-deep); }

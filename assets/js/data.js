@@ -8,6 +8,9 @@ const SITE = {
   tagline: "Unparalleled local insights and tropical adventures await you in the heart of Honduras",
   // Jafeth's number — digits only, no + or spaces. (+1 689 287 0134)
   whatsapp: "16892870134",
+  // ✏️ Number for iMessage and SMS. Keep the + and country code — that is
+  //    what makes the link open Messages on both iPhone and Android.
+  sms: "+16892870134",
   phone: "+1 689-287-0134",
   email: "emilmartinez938@yahoo.com",
   base: "Roatán, Bay Islands, Honduras",
