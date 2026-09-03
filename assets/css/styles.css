@@ -506,3 +506,7 @@ select{
 /* ---------- iMessage / SMS button ---------- */
 .btn--sms{ background:#0d7d90; color:#fff; box-shadow:0 3px 12px rgba(13,125,144,.28); }
 .btn--sms:hover{ background:var(--sea-deep); }
+
+/* ---------- the full crest, where there is room to read it ---------- */
+.crestshot{ margin:0 0 24px; text-align:center; }
+.crestshot img{ width:100%; max-width:230px; height:auto; display:inline-block; }

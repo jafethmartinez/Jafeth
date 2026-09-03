@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Martinez East End Tours">
+ <defs><linearGradient id="iSun" x1="0" y1="0" x2="0" y2="1">
+   <stop offset="0" stop-color="#ffd980"/><stop offset=".5" stop-color="#ffb703"/><stop offset="1" stop-color="#f2603c"/></linearGradient>
+  <clipPath id="iIn"><circle cx="50" cy="50" r="48"/></clipPath></defs>
+ <circle cx="50" cy="50" r="48" fill="#06232e"/>
+ <g clip-path="url(#iIn)">
+   <circle cx="50" cy="47" r="23" fill="url(#iSun)"/>
+   <g stroke="#ffb703" stroke-width="3.4" stroke-linecap="round">
+     <path d="M50 15v-7"/><path d="M27 24l-4-5"/><path d="M73 24l4-5"/></g>
+   <path d="M2 58q11-7 20-2t18 2 18-3 19 3 21-2v45H2z" fill="#0d7d90"/>
+   <path d="M2 55q9-5 17 0t17 0 17 0 17 0 17 0" fill="none" stroke="#16b9ae" stroke-width="3.4" stroke-linecap="round"/>
+   <path d="M6 70q10-5 19 0t19 0 19 0 19 0" fill="none" stroke="#a9ece5" stroke-width="3" stroke-linecap="round" opacity=".8"/>
+   <path d="M12 84q11-5 21 0t21 0 21 0" fill="none" stroke="#a9ece5" stroke-width="2.4" stroke-linecap="round" opacity=".5"/>
+ </g>
+ <circle cx="50" cy="50" r="46" fill="none" stroke="#ffb703" stroke-width="2.4"/>
+</svg>
