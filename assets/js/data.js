@@ -58,7 +58,7 @@ const TIPS = [
    PICKUP POINTS
    ===================================================================== */
 const PICKUPS = [
-  { id: "mahogany", label: "Mahogany Bay Cruise Center", note: "We meet you just past the welcome center, outside the port gate." },
+  { id: "mahogany", label: "Isla Tropicale (formerly Mahogany Bay)", note: "Carnival renamed this terminal in 2026. We meet you just past the welcome center, outside the port gate." },
   { id: "coxen",    label: "Port of Roatán (Coxen Hole)", note: "We meet you at the taxi plaza, immediately outside the terminal." },
   { id: "hotel",    label: "Hotel / resort pickup",       note: "West Bay, West End, Sandy Bay and Coxen Hole hotels included." },
   { id: "airport",  label: "Roatán Airport (RTB)",        note: "Ideal if you're flying in for the week." }
@@ -121,7 +121,7 @@ const TOURS = [
     bring: ["Swimsuit", "Towel", "Reef-safe sunscreen", "Camera", "Cash for food, drinks and extras"],
     itinerary: [
       "Pickup at your ship or hotel",
-      "20 minutes from Mahogany Bay, or 30 from the Port of Roatán, to the dock",
+      "20 minutes from Isla Tropicale, or 30 from the Port of Roatán, to the dock",
       "A brief 5-minute boat crossing to reach the key",
       "Free time — swim, snorkel, kayak, horseback ride",
       "Lunch and the swim-up bar",

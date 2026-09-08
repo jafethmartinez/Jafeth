@@ -1,5 +1,5 @@
 /* =====================================================================
-   Roatán Island Tours — site logic
+   Martinez East End Tours — site logic
    Depends on data.js (SITE, TOURS, PICKUPS) being loaded first.
    ===================================================================== */
 (function () {
