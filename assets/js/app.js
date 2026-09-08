@@ -22,8 +22,13 @@
   const liveTours = () => TOURS.filter((t) => t.active !== false);
   const byId = (id) => TOURS.find((t) => t.id === id);
 
-  function priceLabel(t) {
-    return t.price > 0 ? money(t.price) : "Quote";
+  const hasPrice = (t) => t.priceFrom > 0;
+  /* "$65 – $150", or "$65" when both ends match */
+  function priceRange(t) {
+    if (!hasPrice(t)) return "Ask us";
+    return t.priceFrom === t.priceTo
+      ? money(t.priceFrom)
+      : money(t.priceFrom) + " – " + money(t.priceTo);
   }
 
   /* ---------- icons ---------- */
@@ -187,9 +192,9 @@
     if (fit === "tight") badge = '<span class="badge badge--tight">Cutting it close</span>';
     if (fit === "no")    badge = '<span class="badge badge--no">Too long for your day</span>';
 
-    const priceBlock = t.price > 0
-      ? '<div class="price">' + money(t.price) + "<small>per adult</small></div>"
-      : '<div class="price">Quote<small>per group</small></div>';
+    const priceBlock = hasPrice(t)
+      ? '<div class="price price--from">from ' + money(t.priceFrom) + "<small>per person</small></div>"
+      : '<div class="price price--from">Ask us<small>we\'ll quote it</small></div>';
 
     return (
       '<article class="card' + (fit === "no" ? " is-dim" : "") + '">' +
@@ -406,8 +411,8 @@
 
       const s = sortEl.value;
       list = list.slice().sort((a, b) => {
-        if (s === "price-asc")  return (a.price || 1e9) - (b.price || 1e9);
-        if (s === "price-desc") return (b.price || 0) - (a.price || 0);
+        if (s === "price-asc")  return (a.priceFrom || 1e9) - (b.priceFrom || 1e9);
+        if (s === "price-desc") return (b.priceFrom || 0) - (a.priceFrom || 0);
         if (s === "short")      return a.minutes - b.minutes;
         if (s === "long")       return b.minutes - a.minutes;
         // default: tours that fit the guest's day float to the top
@@ -483,9 +488,9 @@
     const list = (arr, cls) => "<ul class=\"ticks" + (cls || "") + "\">" +
       arr.map((x) => "<li>" + esc(x) + "</li>").join("") + "</ul>";
 
-    const priceRow = t.price > 0
-      ? '<div class="price">' + money(t.price) + "<small>per adult</small></div>"
-      : '<div class="price">Custom<small>quoted per group</small></div>';
+    const priceRow = hasPrice(t)
+      ? '<div class="price">' + priceRange(t) + "<small>per person</small></div>"
+      : '<div class="price">Ask us<small>quoted for your group</small></div>";'.slice(0,-1);
 
     root.innerHTML =
       '<div class="detail">' +
@@ -497,7 +502,7 @@
             '<div><div class="spec__k">Duration</div><div class="spec__v">' + dur(t.minutes) + "</div></div>" +
             '<div><div class="spec__k">Group size</div><div class="spec__v">' + esc(t.group) + "</div></div>" +
             '<div><div class="spec__k">Category</div><div class="spec__v">' + esc(t.category) + "</div></div>" +
-            '<div><div class="spec__k">Adult price</div><div class="spec__v">' + priceLabel(t) + "</div></div>" +
+            '<div><div class="spec__k">Price</div><div class="spec__v">' + priceRange(t) + "</div></div>" +
           "</div>" +
           "<p class=\"lede\">" + esc(t.blurb) + "</p>" +
           (t.extra ? "<p>" + esc(t.extra) + "</p>" : "") +
@@ -520,7 +525,7 @@
             '<dl style="margin:18px 0">' +
               '<div class="bookbox__row"><dt>Duration</dt><dd>' + dur(t.minutes) + "</dd></div>" +
               '<div class="bookbox__row"><dt>Group</dt><dd>' + esc(t.group) + "</dd></div>" +
-              (t.kids ? '<div class="bookbox__row"><dt>Children (under 12)</dt><dd>' + money(t.kids) + "</dd></div>" : "") +
+              (hasPrice(t) ? '<div class="bookbox__row"><dt>Price depends on</dt><dd>Group size &amp; options</dd></div>' : "") +
               '<div class="bookbox__row"><dt>Pickup</dt><dd>Ship, hotel or airport</dd></div>' +
             "</dl>" +
             '<a class="btn btn--primary btn--block btn--lg" href="book.html?tour=' + esc(t.id) + '">Request this tour</a>' +
@@ -550,7 +555,7 @@
     sel.innerHTML = '<option value="">Choose a tour…</option>' +
       liveTours().map((t) =>
         '<option value="' + esc(t.id) + '">' + esc(t.name) +
-        (t.price > 0 ? " — " + money(t.price) + " pp" : " — quoted") + "</option>").join("");
+        (hasPrice(t) ? " — from " + money(t.priceFrom) + " pp" : " — quoted") + "</option>").join("");
 
     const pk = form.pickup;
     pk.innerHTML = '<option value="">Where should we meet you?</option>' +
@@ -592,16 +597,21 @@
       $("#sumDur").textContent = t ? dur(t.minutes) : "—";
 
       const totalEl = $("#sumTotal"), noteEl = $("#sumNote");
+      const people = adults + kids;
       if (!t) {
         totalEl.textContent = "—";
-        noteEl.textContent = "Pick a tour to see an estimate.";
-      } else if (t.price === 0) {
-        totalEl.textContent = "Quote";
-        noteEl.textContent = "Private tours are priced per group — send the request and we'll reply with a price.";
+        noteEl.textContent = "Pick a tour to see the price range.";
+      } else if (!hasPrice(t)) {
+        totalEl.textContent = "Ask us";
+        noteEl.textContent = "This one is quoted for your group — send the request and we'll reply with a price.";
+      } else if (people < 1) {
+        totalEl.textContent = priceRange(t);
+        noteEl.textContent = "Per person. Add your guests to see the range for your group.";
       } else {
-        const total = adults * t.price + kids * (t.kids != null ? t.kids : t.price);
-        totalEl.textContent = money(total);
-        noteEl.textContent = "Estimate only. Nothing is charged now — we confirm availability and the final price by message.";
+        totalEl.textContent = money(people * t.priceFrom) + " – " + money(people * t.priceTo);
+        noteEl.textContent = "For " + people + " " + (people === 1 ? "person" : "people") +
+          ", at " + priceRange(t) + " each. Where you land in that range depends on group size and " +
+          "what you include. Nothing is charged now — we confirm the exact price when we reply.";
       }
 
       /* Warn if their ship time can't accommodate the tour they picked */
@@ -658,8 +668,10 @@
       const adults = parseInt(form.adults.value, 10) || 0;
       const kids = parseInt(form.kids.value, 10) || 0;
       const pickup = PICKUPS.find((p) => p.id === form.pickup.value);
-      const est = t.price === 0 ? "To be quoted"
-        : money(adults * t.price + kids * (t.kids != null ? t.kids : t.price));
+      const people = adults + kids;
+      const est = !hasPrice(t) ? "To be quoted"
+        : money(people * t.priceFrom) + " – " + money(people * t.priceTo) +
+          " (at " + priceRange(t) + " per person)";
 
       const L = [];
       L.push("BOOKING REQUEST — " + SITE.name);
@@ -667,7 +679,7 @@
       L.push("Tour: " + t.name);
       L.push("Date: " + form.date.value);
       L.push("Guests: " + adults + " adult(s)" + (kids ? ", " + kids + " child(ren)" : ""));
-      L.push("Estimated total: " + est);
+      L.push("Price range: " + est);
       L.push("");
       L.push("Name: " + form.name.value.trim());
       L.push("Email: " + form.email.value.trim());

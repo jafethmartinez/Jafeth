@@ -516,3 +516,7 @@ select{
 .famgrid{ display:grid; grid-template-columns:repeat(3,1fr); gap:8px; margin:0 0 22px; }
 .famgrid img{ width:100%; aspect-ratio:1/1; object-fit:cover; border-radius:10px;
   box-shadow:var(--shadow-sm); }
+
+/* "from $65" reads smaller than a flat price */
+.price--from{ font-size:1.32rem; }
+.price--from small{ margin-top:3px; }
