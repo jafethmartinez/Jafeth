@@ -21,6 +21,20 @@ const SITE = {
 };
 
 /* =====================================================================
+   HOW GUESTS PAY  —  ✏️ edit this list and it updates everywhere
+   Payment is taken on the day of the tour, never up front.
+   ===================================================================== */
+const PAYMENTS = [
+  { name: "Cash",      detail: "US dollars or Honduran lempiras" },
+  { name: "Cash App",  detail: "" },
+  { name: "Venmo",     detail: "" },
+  { name: "Apple Pay", detail: "" },
+  { name: "PayPal",    detail: "" }
+];
+// ⚠️ We do NOT take credit or debit cards. Do not let that claim back onto
+//    the site — it was wrong here once already.
+
+/* =====================================================================
    THE TEAM
    ✏️ Add photos: drop them in assets/img/ and put the filename in `photo`
    ===================================================================== */

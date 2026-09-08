@@ -367,6 +367,15 @@
       "<h3>" + esc(t.title) + "</h3><p>" + esc(t.body) + "</p></div>").join("");
   }
 
+  function initPayments() {
+    const els = $$("[data-payments]");
+    if (!els.length || typeof PAYMENTS === "undefined") return;
+    const html = PAYMENTS.map((m) =>
+      '<li><strong>' + esc(m.name) + "</strong>" +
+      (m.detail ? " — " + esc(m.detail) : "") + "</li>").join("");
+    els.forEach((el) => { el.innerHTML = html; });
+  }
+
   function initTeam() {
     const el = $("#team");
     if (!el || typeof TEAM === "undefined") return;
@@ -732,6 +741,7 @@
   /* ---------- boot ---------- */
   document.addEventListener("DOMContentLoaded", function () {
     hydrateSite();
+    initPayments();
     initTips();
     initTeam();
     initHome();

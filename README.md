@@ -130,11 +130,18 @@ formatted booking request, and hands it off through:
 
 You then reply to confirm availability and price, and the guest pays on the day.
 
+**How guests pay** is set in the `PAYMENTS` list in `assets/js/data.js` and
+renders on the contact and booking pages from that one place. Currently cash
+in US dollars or lempiras, Cash App, Venmo, Apple Pay and PayPal.
+
+**No credit or debit cards.** The site wrongly claimed card payment at one
+point; if you edit payment copy, keep that claim off it.
+
 This is deliberate for launch: it costs nothing, needs no backend, and matches
 how island operators already work. It also means **no booking is ever lost to a
 failed payment.**
 
-### When you're ready to take card payments online
+### If you ever want to take payment online
 
 You'll need three things this static site can't provide on its own:
 
