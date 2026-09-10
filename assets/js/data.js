@@ -552,5 +552,58 @@ const TOURS = [
     ],
     good: ["Active guests", "Teens and older kids", "First-time zipliners"],
     note: "Weight and age limits apply. Closed-toe shoes are required — no sandals on the course."
+  },
+  {
+    id: "tiki-boat",
+    active: true,
+    name: "Tiki Boat Cruise",
+    tagline: "A floating tiki bar with a thatch roof — cruise, sip, snorkel, repeat",
+    category: "Water",
+    art: "boat",
+    photo: "tiki-cruising.jpg",
+    gallery: [
+      "tiki-cruising.jpg",
+      "tiki-shoreline.jpg",
+      "tiki-open-water.jpg",
+      "tiki-aerial.jpg",
+      "tiki-guests.jpg",
+      "tiki-friends.jpg",
+      "tiki-bar.jpg",
+      "tiki-deck.jpg",
+      "tiki-benches.jpg",
+      "tiki-dock.jpg",
+      "tiki-coast.jpg"
+    ],
+    videos: [
+      { file: "tiki-boat.mp4", poster: "tiki-boat-poster.jpg",
+        caption: "The boat at the dock, ready to load" }
+    ],
+    minutes: 90,
+    priceFrom: 25, priceTo: 150,
+    group: "Any group size",
+    blurb: "Picture an actual tiki bar — bamboo, palm thatch, stools around the counter — floating off the coast of Roatán. That is the boat. You board at the dock, the crew hands you a margarita on the rocks, and the whole thing motors out along the shoreline while you sit on the deck with your feet up. There is no rushing from stop to stop and no schedule to keep. The boat is the attraction.",
+    extra: "It runs as four different trips, so you pick the one that matches the time you have. Sunday Funday is 1.5 hours and the cheapest way to get on board. Sip N Sail runs 2.5 hours and adds finger food. Snorkel and Chill is 3.5 hours with one snorkel stop. Cruise and Booze is the big one — about 5 hours, all-inclusive, with an open bar and two snorkel stops.",
+    verdict: "If your idea of a good port day is a drink in your hand, music playing, and the coast sliding past, this is the easiest yes on the list. It also scales — the short trip fits a tight window, the long one fills a whole day.",
+    highlights: [
+      "Sunday Funday — 1.5 hrs, $25 per person",
+      "Sip N Sail — 2.5 hrs, $65 per person",
+      "Snorkel & Chill — 3.5 hrs, $100 per person, one snorkel stop",
+      "Cruise & Booze — about 5 hrs, $150 per person, all-inclusive",
+      "Free margaritas on the rocks on every trip",
+      "Shaded bench seating under the thatch roof",
+      "Add-ons: Punta drummers on board, island-style lunch, round-trip transport"
+    ],
+    includes: ["Your chosen cruise", "Free margaritas on the rocks", "Soft drinks and water", "Crew and captain"],
+    excludes: ["Extra drinks on the shorter trips (cash bar on board)", "Snorkel stops on the 1.5 and 2.5 hour trips", "Lunch unless you add it", "Gratuities"],
+    bring: ["Swimsuit and towel if you are on a snorkel trip", "Reef-safe sunscreen", "Sunglasses and a hat", "Cash for the bar"],
+    itinerary: [
+      "Pickup at your ship or hotel — ask us to add transport",
+      "Board at the dock and get your first drink",
+      "Cruise the coast with the bar open",
+      "Snorkel stop or stops on the longer trips",
+      "Back to the dock and your return transfer"
+    ],
+    good: ["Groups and friends travelling together", "Couples", "Anyone who wants to relax rather than run around", "Birthdays and celebrations"],
+    note: "The duration shown is the shortest trip. The longer ones need a bigger window — tell us your ship times and we will tell you which of the four fits. Alcohol is served to guests 21 and over."
   }
 ];
