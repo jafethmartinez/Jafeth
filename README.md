@@ -34,13 +34,17 @@ const SITE = {
   name:     "Martinez East End Tours",
   whatsapp: "16892870134",          // Jafeth's number, from your Wix site
   phone:    "+1 689-287-0134",
-  email:    "emilmartinez938@yahoo.com",
+  email:    "info@martinezeastendtours.com",
   facebook: "", instagram: "", tripadvisor: ""   // leave "" to hide the icon
 };
 ```
 
-Contact details and the team are already filled in from your Wix site. Add your
-social links when you have them.
+Contact details and the team are already filled in. Add your social links
+when you have them.
+
+**The booking inbox is `info@martinezeastendtours.com`.** Email forwarding is
+free with the domain at Porkbun — point that address at an inbox you actually
+read, or booking requests sent by email will bounce.
 
 Then:
 

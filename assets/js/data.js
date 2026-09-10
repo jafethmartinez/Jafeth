@@ -12,7 +12,7 @@ const SITE = {
   //    what makes the link open Messages on both iPhone and Android.
   sms: "+16892870134",
   phone: "+1 689-287-0134",
-  email: "emilmartinez938@yahoo.com",
+  email: "info@martinezeastendtours.com",
   base: "Roatán, Bay Islands, Honduras",
   // ✏️ Add your real links, or leave "" to hide the icon
   facebook: "",
@@ -39,7 +39,7 @@ const PAYMENTS = [
    ✏️ Add photos: drop them in assets/img/ and put the filename in `photo`
    ===================================================================== */
 const TEAM = [
-  { name: "Jafeth Martinez",  role: "CEO",      phone: "689-287-0134",   note: "iMessage and WhatsApp", email: "emilmartinez938@yahoo.com", photo: "team-jafeth.jpg" },
+  { name: "Jafeth Martinez",  role: "CEO",      phone: "689-287-0134",   note: "iMessage and WhatsApp", email: "", photo: "team-jafeth.jpg" },
   { name: "Oscar Martinez",   role: "Co-owner", phone: "+504 9989-2430", note: "", email: "", photo: "team-oscar.jpg" },
   { name: "Mireska Martinez", role: "Co-owner", phone: "+504 9783-5574", note: "", email: "", photo: "team-mireska.jpg" }
 ];
