@@ -36,6 +36,12 @@ jobs:
         with:
           enablement: true
 
+      # `docs/` holds internal business research — competitor pricing, our own
+      # pricing strategy, partner contacts. It belongs in the repo but must
+      # never be served from the public site, so drop it before uploading.
+      - name: Keep internal research out of the published site
+        run: rm -rf docs
+
       - name: Upload the site
         uses: actions/upload-pages-artifact@v3
         with:
