@@ -16,6 +16,7 @@ No build step, no dependencies, no server. Just open `index.html`.
 | `index.html`   | Home — hero, Port Time Planner, three featured tours, how it works |
 | `tours.html`   | All 12 tours, filterable by category and by whether they fit your port day |
 | `tour.html`    | Single tour detail. Driven by the URL: `tour.html?id=west-bay-beach` |
+| `gallery.html` | Every real photo on the site, grouped by tour, filterable by category, with a lightbox |
 | `book.html`    | Booking request form → sends via WhatsApp or email |
 | `about.html`   | Your story and the team (Jafeth, Oscar, Mireska) |
 | `contact.html` | Contact details + 10 FAQs |
@@ -55,9 +56,13 @@ Then:
    honest — this number is a promise.
 3. **Your founding story.** `about.html` is written from your Wix copy. Add the
    part only you can write: who started this, and why.
-4. **Reviews.** `index.html` has a commented-out reviews section. Fill it in with
-   *real* guest reviews once you have them. Never invent them — it's illegal in
-   many countries and it's the fastest way to lose a Tripadvisor listing.
+4. **Reviews.** The reviews section on `index.html` is built from the `REVIEWS`
+   list in `assets/js/data.js`, which ships empty. Add *real* guest reviews there
+   as you collect them — the field shape is shown in the comment above the list —
+   and the section appears on its own. While the list is empty the whole section
+   stays hidden, so the page never shows an empty box.
+   Never invent a review: it's illegal in many countries and it's the fastest way
+   to lose a Tripadvisor listing.
 
 ---
 
@@ -261,7 +266,8 @@ python3 -m http.server 8000
   consent to. Add analytics later if you want it.
 - **Accessible** — semantic HTML, keyboard navigable, labeled form fields,
   visible focus rings, skip link, screen-reader friendly.
-- **Fast** — one CSS file, two small JS files, illustrations are inline SVG.
-  Loads on bad ship wifi.
+- **Fast** — one CSS file and two small JS files on every page (`gallery.html`
+  loads a third, `gallery.js`, which no other page pays for). Illustrations are
+  inline SVG and every gallery photo is lazy-loaded. Loads on bad ship wifi.
 - The Port Time Planner remembers a guest's ship times in their own browser
   (`localStorage`) as they move between pages. Nothing is sent anywhere.

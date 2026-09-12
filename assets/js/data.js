@@ -55,6 +55,41 @@ const TIPS = [
 ];
 
 /* =====================================================================
+   GUEST REVIEWS  —  ✏️ REAL REVIEWS ONLY. THIS LIST SHIPS EMPTY.
+
+   ⚠️ Never write a review yourself, and never let anyone write one for
+      you. Publishing invented reviews is illegal in many countries
+      (in the United States the FTC can fine per fake review), and it is
+      the fastest way to lose a Tripadvisor listing. Every entry below
+      must be a real review from a real guest, in their own words, and
+      attributed to them.
+
+   Where to get them: ask every happy guest, on the day, while they are
+   still standing next to the boat. Ask for a Tripadvisor, Google or
+   Facebook review, then copy what they actually wrote in here. Keep a
+   note of where and when each one was posted so you can prove it.
+
+   The reviews section on index.html renders from this list. While the
+   list is empty the whole section stays hidden — a sales page should
+   never show an empty box or "no reviews yet".
+
+   Each entry looks like this — copy it, fill it in with a real review,
+   and delete the leading slashes:
+
+   {
+     quote:  "What the guest actually wrote, word for word.",
+     name:   "Their name as they signed it, e.g. \"Dana R.\"",
+     source: "Tripadvisor",        // where they posted it, or "" to hide
+     date:   "March 2026",         // when, or "" to hide
+     tour:   "nurse-sharks",       // a tour id from TOURS below, or "" to hide
+     rating: 5                     // 1–5 stars, or 0 to hide the stars
+   }
+   ===================================================================== */
+const REVIEWS = [
+  // { quote: "…", name: "…", source: "Tripadvisor", date: "March 2026", tour: "nurse-sharks", rating: 5 },
+];
+
+/* =====================================================================
    PICKUP POINTS
    ===================================================================== */
 const PICKUPS = [

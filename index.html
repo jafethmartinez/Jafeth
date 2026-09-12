@@ -36,6 +36,7 @@
     <nav class="nav" aria-label="Main">
       <a href="index.html" aria-current="page">Home</a>
       <a href="tours.html">Tours</a>
+      <a href="gallery.html">Gallery</a>
       <a href="about.html">About</a>
       <a href="contact.html">Contact</a>
       <a class="btn btn--primary btn--sm" href="book.html">Book a tour</a>
@@ -210,27 +211,32 @@
   </section>
 
   <!-- =====================================================================
-       ✏️  REAL REVIEWS GO HERE
-       Once you have genuine reviews from guests, paste them in below and
-       delete this comment. Never publish invented reviews — it is illegal
-       in many countries and it is the fastest way to lose a Tripadvisor
-       listing. Ask every happy guest for one; you will have plenty quickly.
+       ✏️  REAL GUEST REVIEWS
+       This section is built from the REVIEWS list in assets/js/data.js.
+       That list ships EMPTY and this whole section stays hidden until you
+       put a real review in it — there is deliberately no "no reviews yet"
+       message on a sales page.
 
-       <section class="section section--sand">
-         <div class="wrap">
-           <div class="center narrow" style="margin-bottom:44px">
-             <p class="eyebrow">Guest reviews</p>
-             <h2>What our guests say</h2>
-           </div>
-           <div class="grid">
-             <article class="card"><div class="card__body">
-               <p>"Their words here."</p>
-               <p class="card__tag"><strong>Guest name</strong> · Ship or month</p>
-             </div></article>
-           </div>
-         </div>
-       </section>
+       To add one: open assets/js/data.js, find REVIEWS, and follow the
+       example in the comment above it.
+
+       ⚠️ Never invent a review, and never let anyone invent one for you.
+          It is illegal in many countries and it is the fastest way to
+          lose a Tripadvisor listing. Ask real guests instead.
   ====================================================================== -->
+  <section class="section section--sand" id="reviewsSection" hidden>
+    <div class="wrap">
+      <div class="center narrow" style="margin-bottom:44px">
+        <p class="eyebrow">Guest reviews</p>
+        <h2>What our guests say</h2>
+        <p class="lede">In their own words, from guests who have been out with us.</p>
+      </div>
+      <div class="grid" id="reviews"></div>
+      <div class="center" style="margin-top:40px">
+        <a class="btn btn--ghost btn--lg" href="tours.html">See what they booked</a>
+      </div>
+    </div>
+  </section>
 
   <section class="section section--sand">
     <div class="wrap">
@@ -276,6 +282,7 @@
         <h4>Explore</h4>
         <ul>
           <li><a href="tours.html">All tours</a></li>
+          <li><a href="gallery.html">Photo gallery</a></li>
           <li><a href="tours.html">Cruise shore excursions</a></li>
           <li><a href="about.html">About us</a></li>
           <li><a href="contact.html">Contact &amp; FAQ</a></li>

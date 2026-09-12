@@ -367,6 +367,50 @@
       "<h3>" + esc(t.title) + "</h3><p>" + esc(t.body) + "</p></div>").join("");
   }
 
+  /* =====================================================================
+     GUEST REVIEWS
+     Rendered from the REVIEWS list in data.js, which ships empty. No
+     reviews means the whole section stays hidden — never an empty box,
+     and never an invented review. See the warning above REVIEWS.
+     ===================================================================== */
+  function initReviews() {
+    const section = $("#reviewsSection");
+    const grid = $("#reviews");
+    if (!section || !grid) return;
+
+    const live = (typeof REVIEWS === "undefined" ? [] : REVIEWS)
+      .filter((r) => r && r.quote && r.name);
+
+    if (!live.length) { section.hidden = true; return; }
+
+    grid.innerHTML = live.map((r) => {
+      const rating = Math.max(0, Math.min(5, parseInt(r.rating, 10) || 0));
+      const stars = rating
+        ? '<p class="review__stars" role="img" aria-label="Rated ' + rating +
+          ' out of 5">' +
+          Array.from({ length: rating }, () =>
+            '<svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" ' +
+            'aria-hidden="true"><path d="M12 3.6l2.6 5.3 5.8.9-4.2 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8L3.6 9.8l5.8-.9z"/></svg>'
+          ).join("") + "</p>"
+        : "";
+
+      const credit = [esc(r.date), esc(r.source)].filter(Boolean).join(" · ");
+      const t = r.tour ? byId(r.tour) : null;
+
+      return '<article class="card"><div class="card__body">' +
+          stars +
+          '<blockquote class="review__quote"><p>&ldquo;' + esc(r.quote) + '&rdquo;</p></blockquote>' +
+          '<p class="card__tag review__by"><strong>' + esc(r.name) + "</strong>" +
+          (credit ? " · " + credit : "") +
+          (t ? '<a class="review__tour" href="tour.html?id=' + esc(t.id) + '">' +
+               esc(t.name) + "</a>" : "") +
+          "</p>" +
+        "</div></article>";
+    }).join("");
+
+    section.hidden = false;
+  }
+
   function initPayments() {
     const els = $$("[data-payments]");
     if (!els.length || typeof PAYMENTS === "undefined") return;
@@ -742,6 +786,7 @@
   document.addEventListener("DOMContentLoaded", function () {
     hydrateSite();
     initPayments();
+    initReviews();
     initTips();
     initTeam();
     initHome();
