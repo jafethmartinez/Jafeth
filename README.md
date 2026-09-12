@@ -101,13 +101,30 @@ Key fields:
 | Field | Meaning |
 |---|---|
 | `id` | Unique, lowercase, no spaces. Becomes the page URL. |
-| `minutes` | Total door-to-door time. Drives the Port Time Planner. |
-| `price` | Per adult, USD. Set `0` for "quote on request". |
-| `kids` | Per child under 12, or `null` if not offered. |
-| `art` | Illustration style: `reef`, `beach`, `jungle`, `adventure`, `wildlife`, `boat`, `culture` |
+| `minutes` | Total door-to-door time. Drives the Port Time Planner. If a tour runs in several lengths, put the **shortest** here so the planner never rules it out, and say so in `note`. |
+| `priceFrom` / `priceTo` | Per person, USD. Set both to `0` for "Ask us" — the site then hides the price instead of showing `$0`. |
+| `group` | Free text, e.g. `"Up to 8 guests"`. |
+| `art` | Illustration style used when there is no photo: `reef`, `beach`, `jungle`, `adventure`, `wildlife`, `boat`, `culture` |
 | `photo` | Optional real photo — see below. |
+| `focus` | Optional `object-position` value, e.g. `"center 70%"`, to stop a tall photo being cropped badly in the wide hero. |
 | `extra` | Optional second paragraph of story (used on Little French Key, Cultural Getaways, Pigeon Cay). |
 | `verdict` | Optional closing pitch, shown in a highlighted box. |
+
+### When you add or remove a tour, update `sitemap.xml`
+
+`sitemap.xml` lists every page for Google, including one line per tour. It is a
+plain file, not generated at page load, so a new tour needs a new entry:
+
+```xml
+  <url>
+    <loc>https://martinezeastendtours.com/tour.html?id=YOUR-NEW-ID</loc>
+    <lastmod>2026-09-12</lastmod>
+    <priority>0.8</priority>
+  </url>
+```
+
+Nothing breaks if you forget — the tour still works and is still linked from
+the tours page. It just takes Google longer to find it.
 
 ### Using real photos
 
