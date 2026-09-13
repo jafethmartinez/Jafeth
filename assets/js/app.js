@@ -16,7 +16,8 @@
 
   function dur(min) {
     const h = Math.floor(min / 60), m = min % 60;
-    return m ? h + " h " + m + " m" : h + " hours";
+    if (m) return h + " h " + m + " m";
+    return h + (h === 1 ? " hour" : " hours");
   }
 
   const liveTours = () => TOURS.filter((t) => t.active !== false);
@@ -166,19 +167,31 @@
     return m ? (+m[1]) * 60 + (+m[2]) : null;
   };
 
-  /* Minutes of actual touring time available, or null if we can't tell. */
+  /* Minutes of actual touring time available.
+     null = we can't tell (nothing entered yet)
+     BAD  = the times don't describe a real port day
+     0    = a real day, but so short it is all buffer
+     >0   = minutes of touring time                          */
+  const BAD = -1;
   function windowFor(plan) {
     if (!plan) return null;
     const a = toMin(plan.arrive), b = toMin(plan.aboard);
     if (a == null || b == null) return null;
-    const raw = b - a;
-    if (raw <= 0) return 0;
+    let raw = b - a;
+    // An all-aboard after midnight is a real pattern on a late call:
+    // 20:00 docked, 01:00 all aboard is five hours, not minus nineteen.
+    if (raw < 0) raw += 1440;
+    // Equal times say nothing, and no ship is alongside for 16+ hours —
+    // that is inverted input the rollover has just made look plausible.
+    if (raw === 0 || raw > 16 * 60) return BAD;
     return Math.max(0, raw - BUFFER);
   }
 
   /* "fits" | "tight" | "no" | null (no plan set) */
   function fitOf(tour, avail) {
-    if (avail == null) return null;
+    // Unparseable or nonsensical times tell us nothing — show no badge at all
+    // rather than marking every tour "too long" off the back of a typo.
+    if (avail == null || avail === BAD) return null;
     if (tour.minutes <= avail) return "fits";
     if (tour.minutes <= avail + 30) return "tight";
     return "no";
@@ -311,11 +324,17 @@
 
       if (avail == null) {
         out.setAttribute("data-show", "false");
+      } else if (avail === BAD) {
+        out.className = "planner__out is-warn";
+        out.setAttribute("data-show", "true");
+        out.innerHTML = "Those times don't look like a port day — please double-check your " +
+          "docking and all-aboard times.";
       } else if (avail <= 0) {
         out.className = "planner__out is-warn";
         out.setAttribute("data-show", "true");
-        out.innerHTML = "Those times don't leave any room for a tour — double-check your " +
-          "arrival and all-aboard times. All-aboard should be later in the day than arrival.";
+        out.innerHTML = "That's a short call — once we've allowed an hour for getting off the ship " +
+          "and back aboard, there's no touring time left. <strong>Message us anyway</strong> — " +
+          "we know the port and we'll tell you honestly what fits.";
       } else {
         const n = liveTours().filter((t) => fitOf(t, avail) === "fits").length;
         out.className = "planner__out";
@@ -424,7 +443,7 @@
     const el = $("#team");
     if (!el || typeof TEAM === "undefined") return;
     el.innerHTML = TEAM.map((m) => {
-      const digits = m.phone.replace(/[^\d]/g, "");
+      const digits = m.phone.replace(/[^\d+]/g, "");
       return '<div class="member">' +
         (m.photo
           ? '<img class="member__photo" src="assets/img/' + esc(m.photo) + '" alt="' + esc(m.name) + '" loading="lazy">'
@@ -543,9 +562,11 @@
 
     const priceRow = hasPrice(t)
       ? '<div class="price">' + priceRange(t) + "<small>per person</small></div>"
-      : '<div class="price">Ask us<small>quoted for your group</small></div>";'.slice(0,-1);
+      : '<div class="price">Ask us<small>quoted for your group</small></div>';
 
     root.innerHTML =
+      '<h1 class="detail__title">' + esc(t.name) + "</h1>" +
+      (t.tagline ? '<p class="detail__tagline">' + esc(t.tagline) + "</p>" : "") +
       '<div class="detail">' +
         "<div>" +
           '<div class="detail__media">' + media(t) + "</div>" +
@@ -622,6 +643,10 @@
     if (plan) {
       if (plan.pickup) pk.value = plan.pickup;
       if (plan.aboard) form.aboard.value = plan.aboard;
+      // Without this the form silently falls back to its 09:00 default, then
+      // both the fit warning and the booking message we receive carry a
+      // docking time the guest never gave us.
+      if (plan.arrive) form.arrive.value = plan.arrive;
       if (plan.pickup === "mahogany" || plan.pickup === "coxen") form.arrivalBy.value = "cruise";
     }
 

@@ -287,6 +287,12 @@ select{
 .detail h2{ font-size:1.5rem; margin-top:1.6em; }
 .detail h2:first-of-type{ margin-top:1.1em; }
 
+/* Tour name. The base h1 is hero-scale, which is far too loud sitting
+   directly above the detail grid, so it is sized as a content title. */
+.detail__title{ font-size:clamp(1.9rem, 3.6vw, 2.6rem); margin:0 0 .18em; }
+.detail__tagline{ font-size:1.08rem; color:var(--ink-soft);
+  margin:0 0 28px; max-width:46em; }
+
 .speclist{ display:grid; gap:14px; grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
   padding:20px; background:var(--white); border:1px solid var(--line); border-radius:var(--radius); margin:22px 0; }
 .spec__k{ font-size:.73rem; font-weight:750; letter-spacing:.09em; text-transform:uppercase; color:var(--ink-faint); }
