@@ -3,17 +3,95 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Tour details | Martinez East End Tours</title>
-<meta name="description" content="Full details, itinerary, pricing and what's included for this Roatán shore excursion.">
+<title>Roatán Tour Details &amp; Itinerary | Martinez East End Tours</title>
+<meta name="description" content="Full itinerary, inclusions and port-time fit for a Roatán shore excursion — reef, mangroves, wildlife and the Garífuna east end. Pickup at Isla Tropicale or Port of Roatán.">
 <meta name="theme-color" content="#0d7d90">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Tour details | Martinez East End Tours">
-<meta property="og:description" content="Full details, itinerary, pricing and what's included for this Roatán shore excursion.">
+<meta property="og:title" content="Roatán Tour Details &amp; Itinerary | Martinez East End Tours">
+<meta property="og:description" content="Full itinerary, inclusions and port-time fit for a Roatán shore excursion — reef, mangroves, wildlife and the Garífuna east end. Pickup at Isla Tropicale or Port of Roatán.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://martinezeastendtours.com/assets/img/logo-1024.png">
 <meta property="og:url" content="https://martinezeastendtours.com/tour.html">
 <meta property="og:site_name" content="Martinez East End Tours">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Roatán Tour Details &amp; Itinerary | Martinez East End Tours">
+<meta name="twitter:description" content="Full itinerary, inclusions and port-time fit for a Roatán shore excursion — reef, mangroves, wildlife and the Garífuna east end.">
+<meta name="twitter:image" content="https://martinezeastendtours.com/assets/img/logo-1024.png">
+<!--
+  Fallback metadata above covers non-JS crawlers and the id-less URL.
+  Once assets/js/data.js has loaded (it's a normal, parser-blocking
+  script at the end of body, so it always runs before this one), the
+  deferred script below reads the live TOURS array and the ?id= in the
+  URL and overwrites og:title / og:description / og:url / canonical /
+  og:image for the specific tour, plus injects a TouristTrip JSON-LD
+  block. It never touches assets/js/app.js or assets/js/data.js, and it
+  duplicates no tour content — it only reads what's already there.
+  document.title and the name="description" tag are left alone here
+  because assets/js/app.js (initTour) already sets those per tour.
+-->
+<script>
+// `defer` is ignored on an inline script, so this would otherwise run here in
+// <head> — long before data.js defines TOURS at the end of <body>, leaving the
+// guard below to bail on every single page load. Wait for DOM ready instead.
+document.addEventListener("DOMContentLoaded", function () {
+  function setAttr(selector, attr, value) {
+    var el = document.querySelector(selector);
+    if (el) el.setAttribute(attr, value);
+  }
+  if (typeof TOURS === "undefined") return;
+  var id = new URLSearchParams(location.search).get("id");
+  var t = TOURS.filter(function (x) { return x.id === id; })[0];
+  if (!t || t.active === false) return;
+
+  var url = "https://martinezeastendtours.com/tour.html?id=" + encodeURIComponent(t.id);
+  var desc = (t.blurb || "").slice(0, 155);
+  var ogTitle = t.name + " | Martinez East End Tours";
+
+  setAttr('meta[property="og:title"]', "content", ogTitle);
+  setAttr('meta[property="og:description"]', "content", desc);
+  setAttr('meta[property="og:url"]', "content", url);
+  setAttr('meta[name="twitter:title"]', "content", ogTitle);
+  setAttr('meta[name="twitter:description"]', "content", desc);
+  setAttr('link[rel="canonical"]', "href", url);
+  if (t.photo) {
+    var imgUrl = "https://martinezeastendtours.com/assets/img/" + t.photo;
+    setAttr('meta[property="og:image"]', "content", imgUrl);
+    setAttr('meta[name="twitter:image"]', "content", imgUrl);
+  }
+
+  // TouristTrip structured data. No prices, ratings or review counts —
+  // priceFrom/priceTo in data.js are placeholders and REVIEWS is empty.
+  var ld = {
+    "@context": "https://schema.org",
+    "@type": "TouristTrip",
+    "name": t.name,
+    "description": desc,
+    "url": url,
+    "provider": {
+      "@type": "TravelAgency",
+      "name": "Martinez East End Tours",
+      "url": "https://martinezeastendtours.com/"
+    }
+  };
+  if (t.tagline) ld.additionalProperty = { "@type": "PropertyValue", "name": "tagline", "value": t.tagline };
+  if (typeof t.minutes === "number" && t.minutes > 0) ld.duration = "PT" + t.minutes + "M";
+  if (Array.isArray(t.good) && t.good.length) ld.touristType = t.good;
+  if (Array.isArray(t.itinerary) && t.itinerary.length) {
+    ld.itinerary = {
+      "@type": "ItemList",
+      "itemListElement": t.itinerary.map(function (step, i) {
+        return { "@type": "ListItem", "position": i + 1, "name": step };
+      })
+    };
+  }
+  if (t.photo) ld.image = "https://martinezeastendtours.com/assets/img/" + t.photo;
+
+  var script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.text = JSON.stringify(ld);
+  document.head.appendChild(script);
+});
+</script>
 <link rel="canonical" href="https://martinezeastendtours.com/tour.html">
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-32.png">
@@ -22,6 +100,27 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Martinez East End Tours",
+  "image": "https://martinezeastendtours.com/assets/img/logo-1024.png",
+  "url": "https://martinezeastendtours.com/",
+  "telephone": "+1 689-287-0134",
+  "email": "info@martinezeastendtours.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Roatán",
+    "addressRegion": "Bay Islands",
+    "addressCountry": "HN"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Roatán, Bay Islands, Honduras"
+  }
+}
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>

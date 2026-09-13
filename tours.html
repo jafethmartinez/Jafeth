@@ -4,16 +4,19 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>All Roatán Tours &amp; Shore Excursions | Martinez East End Tours</title>
-<meta name="description" content="Every tour we run on Roatán — reef snorkeling, diving, zip lines, monkeys, island culture and private tours. Filter by category, price or the time you have ashore.">
+<meta name="description" content="12 Roatán shore excursions for cruise passengers at Isla Tropicale and Port of Roatán — snorkeling, zip lines, wildlife, culture. Filter by category or port time.">
 <meta name="theme-color" content="#0d7d90">
 <meta property="og:type" content="website">
 <meta property="og:title" content="All Roatán Tours &amp; Shore Excursions | Filter by Your Port Time">
-<meta property="og:description" content="Every tour we run on Roatán — reef snorkeling, diving, zip lines, monkeys, island culture and private tours. Filter by category, price or the time you have ashore.">
+<meta property="og:description" content="12 Roatán shore excursions for cruise passengers at Isla Tropicale and Port of Roatán — snorkeling, zip lines, wildlife, culture. Filter by category or port time.">
 <meta property="og:locale" content="en_US">
 <meta property="og:image" content="https://martinezeastendtours.com/assets/img/logo-1024.png">
 <meta property="og:url" content="https://martinezeastendtours.com/tours.html">
 <meta property="og:site_name" content="Martinez East End Tours">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="All Roatán Tours &amp; Shore Excursions | Martinez East End Tours">
+<meta name="twitter:description" content="12 Roatán shore excursions for cruise passengers at Isla Tropicale and Port of Roatán — snorkeling, zip lines, wildlife, culture. Filter by category or port time.">
+<meta name="twitter:image" content="https://martinezeastendtours.com/assets/img/logo-1024.png">
 <link rel="canonical" href="https://martinezeastendtours.com/tours.html">
 <link rel="icon" type="image/svg+xml" href="assets/img/logo-icon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icon-32.png">
@@ -22,6 +25,61 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap">
 <link rel="stylesheet" href="assets/css/styles.css">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "TravelAgency",
+  "name": "Martinez East End Tours",
+  "image": "https://martinezeastendtours.com/assets/img/logo-1024.png",
+  "url": "https://martinezeastendtours.com/",
+  "telephone": "+1 689-287-0134",
+  "email": "info@martinezeastendtours.com",
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Roatán",
+    "addressRegion": "Bay Islands",
+    "addressCountry": "HN"
+  },
+  "areaServed": {
+    "@type": "Place",
+    "name": "Roatán, Bay Islands, Honduras"
+  }
+}
+</script>
+<script>
+// `defer` is ignored on an inline script, so this would otherwise run here in
+// <head> — long before data.js defines TOURS at the end of <body>, leaving the
+// guard below to bail on every single page load. Wait for DOM ready instead.
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof TOURS === "undefined") return;
+  var active = TOURS.filter(function (t) { return t.active !== false; });
+  var ld = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "itemListElement": active.map(function (t, i) {
+      var url = "https://martinezeastendtours.com/tour.html?id=" + encodeURIComponent(t.id);
+      var item = {
+        "@type": "TouristTrip",
+        "name": t.name,
+        "description": (t.blurb || "").slice(0, 155),
+        "url": url,
+        "provider": {
+          "@type": "TravelAgency",
+          "name": "Martinez East End Tours",
+          "url": "https://martinezeastendtours.com/"
+        }
+      };
+      if (typeof t.minutes === "number" && t.minutes > 0) item.duration = "PT" + t.minutes + "M";
+      if (t.photo) item.image = "https://martinezeastendtours.com/assets/img/" + t.photo;
+      return { "@type": "ListItem", "position": i + 1, "item": item };
+    })
+  };
+  var script = document.createElement("script");
+  script.type = "application/ld+json";
+  script.text = JSON.stringify(ld);
+  document.head.appendChild(script);
+});
+</script>
 </head>
 <body>
 <a class="skip" href="#main">Skip to content</a>
