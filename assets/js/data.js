@@ -15,7 +15,7 @@ const SITE = {
   email: "info@martinezeastendtours.com",
   base: "Roatán, Bay Islands, Honduras",
   // ✏️ Add your real links, or leave "" to hide the icon
-  facebook: "",
+  facebook: "https://www.facebook.com/1344799685382219",
   instagram: "",
   tripadvisor: ""
 };
