@@ -23,6 +23,8 @@
   const byId = (id) => TOURS.find((t) => t.id === id);
 
   const hasPrice = (t) => t.priceFrom > 0;
+  /* True when the tour has one fixed price rather than a spread. */
+  const isFixed = (t) => t.priceFrom === t.priceTo;
   /* "$65 – $150", or "$65" when both ends match */
   function priceRange(t) {
     if (!hasPrice(t)) return "Ask us";
@@ -193,7 +195,8 @@
     if (fit === "no")    badge = '<span class="badge badge--no">Too long for your day</span>';
 
     const priceBlock = hasPrice(t)
-      ? '<div class="price price--from">from ' + money(t.priceFrom) + "<small>per person</small></div>"
+      ? '<div class="price price--from">' + (isFixed(t) ? "" : "from ") +
+        money(t.priceFrom) + "<small>per person</small></div>"
       : '<div class="price price--from">Ask us<small>we\'ll quote it</small></div>';
 
     return (
@@ -564,7 +567,8 @@
     sel.innerHTML = '<option value="">Choose a tour…</option>' +
       liveTours().map((t) =>
         '<option value="' + esc(t.id) + '">' + esc(t.name) +
-        (hasPrice(t) ? " — from " + money(t.priceFrom) + " pp" : " — quoted") + "</option>").join("");
+        (hasPrice(t) ? " — " + (isFixed(t) ? "" : "from ") + money(t.priceFrom) + " pp"
+                     : " — quoted") + "</option>").join("");
 
     const pk = form.pickup;
     pk.innerHTML = '<option value="">Where should we meet you?</option>' +
@@ -615,12 +619,17 @@
         noteEl.textContent = "This one is quoted for your group — send the request and we'll reply with a price.";
       } else if (people < 1) {
         totalEl.textContent = priceRange(t);
-        noteEl.textContent = "Per person. Add your guests to see the range for your group.";
+        noteEl.textContent = isFixed(t)
+          ? "Per person. Add your guests to see the total."
+          : "Per person. Add your guests to see the range for your group.";
       } else {
-        totalEl.textContent = money(people * t.priceFrom) + " – " + money(people * t.priceTo);
+        totalEl.textContent = isFixed(t)
+          ? money(people * t.priceFrom)
+          : money(people * t.priceFrom) + " – " + money(people * t.priceTo);
         noteEl.textContent = "For " + people + " " + (people === 1 ? "person" : "people") +
-          ", at " + priceRange(t) + " each. Where you land in that range depends on group size and " +
-          "what you include. Nothing is charged now — we confirm the exact price when we reply.";
+          ", at " + priceRange(t) + " each. " +
+          (isFixed(t) ? "" : "Where you land in that range depends on group size and what you include. ") +
+          "Nothing is charged now — we confirm the exact price when we reply.";
       }
 
       /* Warn if their ship time can't accommodate the tour they picked */
