@@ -320,12 +320,11 @@
         out.innerHTML = "Those times don't leave any room for a tour — double-check your " +
           "arrival and all-aboard times. All-aboard should be later in the day than arrival.";
       } else {
-        const n = liveTours().filter((t) => fitOf(t, avail) === "fits").length;
         out.className = "planner__out";
         out.setAttribute("data-show", "true");
         out.innerHTML = "You have roughly <strong>" + dur(avail) + " of tour time</strong> " +
           "(we've already set aside an hour for getting off the ship and getting back). " +
-          "<strong>" + n + " of our " + liveTours().length + " tours</strong> fit comfortably in that window.";
+          "We've flagged the attractions that fit comfortably in that window.";
       }
       if (persist) savePlan(plan);
       if (onChange) onChange(avail);
@@ -432,8 +431,9 @@
         return (rank[fitOf(a, avail)] ?? 0) - (rank[fitOf(b, avail)] ?? 0);
       });
 
-      countEl.innerHTML = "<b>" + list.length + "</b> tour" + (list.length === 1 ? "" : "s") +
-        (cat === "All" ? "" : " in " + esc(cat));
+      countEl.innerHTML = cat === "All"
+        ? "All our attractions"
+        : "Attractions in " + esc(cat);
 
       grid.innerHTML = list.length
         ? list.map((t) => card(t, avail)).join("")

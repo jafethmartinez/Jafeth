@@ -65,7 +65,10 @@ const PICKUPS = [
 ];
 
 /* =====================================================================
-   TOURS  —  all 11 attractions from your Wix site.
+   TOURS  —  the attractions listed on the site.
+
+   This is not everything the family can arrange, so nothing on the site
+   should quote a total like "all 11 attractions" — it reads as a limit.
 
    ⚠️  TWO FIELDS ON EVERY TOUR STILL NEED YOU:
        priceFrom / priceTo — per-person range in US dollars, supplied by
